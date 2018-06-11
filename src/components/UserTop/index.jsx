@@ -12,7 +12,9 @@ class UserTop extends React.Component {
       <div className='container'>
         <div className='user-top'>
           <div className={`icon`}>
-            <img alt="更改头像" class="be6sR" src="https://instagram.fhkg3-1.fna.fbcdn.net/vp/cad3042055d5dbed9baf5fb61da87da3/5BB51A8F/t51.2885-19/s320x320/23734310_1758883371081152_1640210429378560000_n.jpg"/>
+            <div className="icon-img">
+              <img alt="更改头像" className="be6sR" src="https://instagram.fhkg3-1.fna.fbcdn.net/vp/cad3042055d5dbed9baf5fb61da87da3/5BB51A8F/t51.2885-19/s320x320/23734310_1758883371081152_1640210429378560000_n.jpg"/>
+            </div>
           </div>
           <div className={'user-data'}>
             <div className={`username`}>

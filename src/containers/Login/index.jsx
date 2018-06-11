@@ -1,7 +1,7 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import LoginComponent from '../../components/Login'
-import UserMain from '../../components/UserMain'
+import UserMain from '../UserPage'
 
 import './style.less'
 

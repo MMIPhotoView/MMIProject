@@ -19,10 +19,8 @@ class Home extends React.Component {
 
     return (
       <div className="index">
-
-        <div style={{marginTop :'5%'}}></div>
         <Welcome />
-        <div style={{marginTop :'10%'}}></div>
+        <div style={{marginTop :'5%'}}></div>
         {
           this.state.data.length ? <PhotoList list = { this.state.data }/> : <div>加载中...</div>
         }
