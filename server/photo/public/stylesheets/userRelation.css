@@ -1,0 +1,252 @@
+em {
+    font-style: normal;
+    font-weight: normal;
+}
+
+.relation-data {
+    background-color: #ffffff;
+}
+
+.relation-group-name {
+    padding-top: 10px;
+    padding-left: 20px;
+    height: 20px;
+    padding-bottom: 10px;
+    border-bottom-style:solid;
+    border-width: 0.5px;
+    border-radius:0px;
+    text-align: left;
+}
+
+.relation-search-user{
+    height: 40px;
+}
+.relation-search-user >ul > li {
+    float: left;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+.relation-search-input {
+    font-size: 15px;
+    width: 150px;
+    height: 20px;
+    margin-left: 270px;
+    padding-right: 30px;
+}
+
+.relation-search-icon{
+    position: absolute;
+    left: 590px;
+    top: 65px;
+    z-index:10;
+}
+
+.relation-user {
+
+}
+.relation-user-one{
+    background-color: #f2f2f5;
+    width: 90%;
+    height: 150px;
+    margin-left: 5%;
+    margin-top: 10px;
+    margin-bottom:10px;
+    float: left;
+    border-radius:0px;
+}
+.relation-user-one > div {
+    float: left;
+}
+
+.relation-user-one > div > a> img {
+    border-radius:50%;
+    width: 70px;
+    height: 70px;
+    margin-top: 40px;
+    margin-left: 15px;
+}
+.relation-user-desc {
+
+    margin: 5% 5%;
+    border-radius:0px;
+    height: 60%;
+    width: 150px;
+    padding-left: 20px;
+    border-left:solid;
+    border-width: 0.5px;
+    overflow: hidden;
+}
+
+.relation-user-desc > h1 {
+    font-size: 20px;
+}
+/**
+ * 用户关系板块
+ */
+.user-relation{
+    margin-top: 0px;
+}
+/**
+ * 用户关系板块上部
+ */
+.user-relation-top{
+    padding-top: 10px;
+    padding-left: 20px;
+    height: 20px;
+    padding-bottom: 10px;
+    border-bottom-style:solid;
+    border-width: 0.5px;
+    border-radius:0px;
+    text-align: left;
+}
+/**
+ * 用户关系板块中部
+ */
+.user-relation-middle{
+
+}
+.user-relation-low{
+    padding-top: 10px;
+    padding-left: 20px;
+
+    border-bottom-style:solid;
+    border-width: 0.5px;
+    border-radius:0px;
+    text-align: left;
+}
+
+.user-relation-middle >ul >li{
+    font-size: 12px;
+    text-align: left;
+    padding-left: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+/*粉丝的block的模块*/
+.follow_box {
+    display: block;
+}
+.follow_inner {
+    padding: 1px 16px 16px;
+    overflow: hidden;
+}
+
+.follow_list {
+    position: relative;
+    margin-top: -1px;
+    padding: 16px 0;
+}
+.follow_item {
+    position: relative;
+    margin-top: -1px;
+    padding: 16px 0;
+}
+.follow_box .follow_item {
+    position: relative;
+    margin-top: -1px;
+    padding: 16px 0;
+    border-top-width: 1px;
+    border-top-style: solid;
+}
+
+
+
+.S_line2 {
+    border-color: #f2f2f5;
+}
+.clearfix {
+    display: block;
+}
+.follow_box .mod_pic {
+    float: left;
+    padding-right: 15px;
+}
+.follow_box .mod_pic  img {
+    border-radius: 50%;
+}
+
+a, .S_link1{
+    color: #307d74;
+}
+
+.S_line1, .W_btn_prev, .W_btn_next, .W_btn_b {
+    border-color: #d9d9d9;
+}
+
+.follow_box .mod_info {
+    margin-left: 65px;
+    vertical-align: top;
+    zoom: 1;
+}
+.W_f14 {
+    font-size: 14px;
+}
+
+.W_fb {
+    font-weight: 700;
+}
+.follow_box .info_connect {
+    width: 100%;
+}
+
+.follow_box .info_connect .conn_type {
+    padding: 0 10px 0 0;
+}
+.follow_box .info_connect .count {
+    padding-left: 5px;
+}
+.W_vline {
+    border-left-width: 1px;
+    border-left-style: solid;
+    width: 0;
+    overflow: hidden;
+}
+.follow_box .info_connect .W_vline {
+    display: inline;
+    width: auto;
+    padding: 0 10px;
+}
+
+.follow_box .info_add,  .follow_box .info_intro,  .follow_box .info_relation,  .follow_box .info_from,  .follow_box .info_recent {
+    margin-top: 8px;
+}
+
+.follow_box .tit {
+    padding-right: 5px;
+}
+.S_txt2, .W_input, .W_btn_b_disable, .W_btn_b_disable:hover {
+    color: #808080;
+    text-decoration: none;
+}
+.follow_box .info_intro {
+    width: 350px;
+    max-height: 32px;
+    line-height: 16px;
+    overflow: hidden;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.follow_box .opt_box {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    font-size: 4px;
+}
+
+.follow-manger{
+    margin-top: 20px;
+    margin-left: 200px;
+}
+
+
+
+.follow_box .opt_box .W_btn_b {
+    margin-left: 6px;
+}
+.W_btn_b {
+     border-color: #d9d9d9;
+ }

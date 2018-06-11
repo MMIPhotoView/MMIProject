@@ -1,0 +1,46 @@
+body{
+    background-image: url("../images/kiwi1.jpeg");
+    background-repeat: repeat-y;
+    background-size:100%;
+    height: auto;
+}
+.search-block {
+    width:80%;
+    margin-left: 10%;
+
+}
+
+.photo-search-bar {
+    width: 80%;
+    margin-left: 25%;
+    padding-top: 300px;
+
+}
+
+.photo-search-bar input {
+    background: rgba(251, 255, 246, 0.4);
+    border-style: none;
+}
+.photo-search-bar input:hover {
+    background: rgba(251, 255, 246, 1);
+}
+
+.photo-search-bar .user-search{
+    position: absolute;
+    top: 388px;
+    right: 490px;
+
+}
+
+.result-block{
+
+    margin-top: 50px;
+    width:50%;
+    margin-left: 25%;
+    height: 200px;
+
+}
+
+.S_txt1,.S_txt2{
+    color: #1d1d1d;
+}

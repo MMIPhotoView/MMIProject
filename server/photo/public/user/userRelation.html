@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户主界面</title>
+
+
+
+</head>
+<script src="../javascripts/jquery-3.1.1.js"></script>
+<link rel="stylesheet" href="../layui/css/layui.css">
+<script src="../layui/layui.js"></script>
+
+
+<!--引入common的js文件-->
+<script src="../javascripts/common.js"></script>
+<!--引入cookie文件-->
+<script src="../javascripts/cookie.js"></script>
+<!--用户模块界面-->
+<script src="../javascripts/user.js"></script>
+
+<!--用户关系模块界面-->
+<script src="../javascripts/userRelation.js"></script>
+<!--引入共享的样式文件-->
+<link rel="stylesheet" href="../stylesheets/common.css">
+<!--引入userRelation的样式文件-->
+<link rel="stylesheet" href="../stylesheets/userRelation.css">
+<!--引入user的样式文件-->
+<link rel="stylesheet" href="../stylesheets/user.css">
+
+
+<body>
+<div id="header">
+    <div class="layui-row">
+        <div id="main-bar">
+            <ul class="layui-nav" lay-filter="mainBar" style="background-color: #1d1d1d">
+                <li class="layui-nav-item"><a href="/">Home</a></li>
+                <li class="layui-nav-item"><a href="/users">MyHomepage</a></li>
+                <li class="friend-page layui-nav-item"><a href="../user/search.html">Friends</a></li>
+                <li class="about layui-nav-item"><a href="#">About</a></li>
+                <li class="user layui-nav-item" data-method="showLoginFrame">
+                    <a href="#"><i class="layui-icon">&#xe612;</i>用户</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class= "user-main-middle">
+    <div class="layui-row">
+        <div class="layui-col-md12">
+            <div class="icon-name-desc">
+                <img class="user-icon" data-method="showPhoto" src="../images/kiwi8.jpeg" >
+                <h1 id="name" style="font-size: 30px;color: #ffffff;">space空格</h1>
+                <p id="desc" style="color: #ffffff;">这是一只很懒的空格</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="layui-row layui-col-space30">
+        <div class="layui-col-md8">
+            <div class="grid-demo grid-demo-bg1">
+                <div class="relation-data">
+                    <div class="relation-group-name layui-row">
+                        <h3><span></span></h3>
+                    </div>
+                    <div class="relation-search-user layui-row">
+                        <ul>
+                            <li class="" style=" margin-left: 130px;padding-top: 8px">
+                                <input type="text" class="relation-search-input" placeholder="请输入昵称或备注"/>
+                                <a onclick="searchUser($(this))" href="javascript:;"><i class="relation-search-icon layui-icon" style="font-size: 20px; color: #1e2742;">&#xe615;</i></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="relation-user">
+                        <!--关注的demo-->
+                        <div class="follow1_box">
+                            <div class='layui-row'>
+                                <div class='relation-user-one layui-row' >
+                                    <div><img src='../images/kiwi1.jpeg'></div>
+                                    <div class='relation-user-desc'>
+                                        <h1> 空格靓仔</h1>
+                                        <p>🐶已经关注</p>
+                                        <p style='font-size: 12px;margin-top: 5px'>简介：我都唔知道写乜也好</p>
+                                    </div>
+                                </div>
+                                <div class='relation-user-one layui-row' >
+                                    <div><img src='../images/kiwi1.jpeg'></div>
+                                    <div class='relation-user-desc'>
+                                        <h1> 空格靓仔</h1>
+                                        <p>🐶已经关注</p>
+                                        <p style='font-size: 12px;margin-top: 5px'>简介：我都唔知道写乜也好</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--粉丝的demo-->
+                        <div class='follow_box layui-row'>
+                            <div class='follow_inner'>
+                                <ul class='follow_list'>
+                                    <li class='follow_item S_line2'>
+                                        <dl class='clearfix'>
+                                            <dt class='mod_pic'>
+                                                <a target='_blank' title='Vmil25' href='/u/2334202964?refer_flag=1005050005_'>
+                                                    <img width='50' height='50' alt='Vmil25' src='//tvax2.sinaimg.cn/crop.9.0.494.494.50/8b211c54ly8fgvkveneehj20e80dq0te.jpg'>
+                                                </a>
+                                            </dt>
+                                            <dd class='mod_info S_line1'>
+                                                <div class='info_name W_fb W_f14'>
+                                                    <a target='_blank' class='S_txt1'>Vmil25</a>
+                                                    <a><i class='W_icon icon_female'></i></a>
+                                                </div>
+                                                <div class='info_connect'>
+                                                    <span class='conn_type'>关注 <em class='count'><a>68</a></em></span>
+                                                    <span class='conn_type W_vline S_line1'>粉丝<em class='count'><a>172</a></em></span>
+                                                    <span class='conn_type W_vline S_line1'>微博<em class='count'><a>1</a></em></span>
+                                                </div>
+
+                                                <div class='info_add'><em class='tit S_txt2'>地址</em>澳门 其他</div>
+
+                                                <div class='info_intro'><em class='tit S_txt2'>简介</em><span>Everything will be ok</span></div>
+                                            </dd>
+                                            <dd class='opt_box' node-type='opt_box'>
+                                                <a href='javascript:;' class='W_btn_b' >关注</a>
+                                                <a href='javascript:;' class='W_btn_b' >移除粉丝</a>
+                                            </dd>
+                                        </dl>
+                                    </li>
+
+
+
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+
+            </div>
+        <div class="layui-col-md4">
+            <div class="grid-demo">
+                <div class="user-data">
+                    <div class="user-relation">
+                        <div class="user-relation-top layui-row">
+                            <a><h1 style="font-size: 15px"><i class="layui-icon" style="font-size: 15px; color: #1d1d1d;">&#xe612;</i>  关注  <span style="font-size: 15px" class="followNum"></span></h1>
+                            </a>
+                        </div>
+                        <div class="user-relation-middle layui-row">
+                            <ul>
+                                <li><a><i class="layui-icon" style="margin-right: 5px;font-size: 12px; color: #1d1d1d;">&#xe613;</i>好友圈</a></li>
+                                <li><a><i class="layui-icon" style="margin-left: 3px;margin-right: 7px;font-size: 12px; color: #1d1d1d;">&#xe617;</i>未分组</a></li>
+                                <li class="add-new-group" isAdd="1">
+                                    <button class=" layui-btn layui-btn-primary layui-btn-small" data-method="showNewGroupFrame">
+                                        <i class="layui-icon" style="margin-left: 3px;margin-right: 7px;font-size: 12px; color: #f7755b;">&#xe654;</i>
+                                        新增分组
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="user-relation-low layui-row">
+                            <a><h1 style="font-size: 15px"><i class="layui-icon" style="font-size: 15px; color: #1d1d1d;">&#xe612;</i>  粉丝  <span style="font-size: 15px" class="beFollowNum"></span></h1>
+                            </a>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+<!--login的代码-->
+<div class="login">
+    <form class="layui-form layui-form-pane" action="" >
+        <div class="layui-form-item">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-block">
+                <input id="user_account" type="text" style="width: 200px" name="user_account" required  lay-verify="username" placeholder="请输入账号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-inline">
+                <input id="user_password" type="password" style="width: 200px" name="user_password" required lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="margin-left: 40px">
+                <button type="reset" class="layui-btn layui-btn"><a style="color: #fbfff6" href="../user/signUp.html">注册</a></button>
+                <button class="layui-btn" lay-submit lay-filter="formDemo">登录</button>
+                <button type="reset" class="layui-btn layui-btn">重  置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="new-group-frame">
+    <div style="margin-top: 30px;margin-left: 30px">
+        <label class="layui-form-label">分组名：</label>
+        <input type="text" style="width: 150px"  placeholder="请输入分组名" class="new-group-name layui-input">
+    </div>
+    <div style="margin-left: 130px;margin-top: 20px">
+        <button class="layui-btn layui-btn-warm" onclick="addNewGroup()">确定</button>
+        <button class="layui-btn layui-btn-warm" onclick="cencel()">取消</button>
+    </div>
+</div>
+</body>
+</html>

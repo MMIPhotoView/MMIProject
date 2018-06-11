@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>主页</title>
+
+</head>
+
+<script src="../javascripts/jquery-3.1.1.js"></script>
+<link rel="stylesheet" href="../layui/css/layui.css">
+<script src="../layui/layui.js"></script>
+
+
+
+<!--引入css样式文件-->
+<link rel="stylesheet" href="../stylesheets/index.css">
+<!--引入共享的样式文件-->
+<link rel="stylesheet" href="../stylesheets/common.css">
+<!--引入此文档的样式文件-->
+<link rel="stylesheet" href="../stylesheets/search.css">
+<!--引入此文档的样式文件-->
+<link rel="stylesheet" href="../stylesheets/userRelation.css">
+
+
+<!--引入管理主界面的js文件-->
+<script src="../javascripts/common.js"></script>
+<!--引入管理主界面的js文件-->
+<script src="../javascripts/index.js"></script>
+<!--引入cookie文件-->
+<script src="../javascripts/cookie.js"></script>
+<!--引入管理主界面的js文件-->
+<script src="../javascripts/search.js"></script>
+
+<body>
+
+
+<div id="header" >
+    <div class="layui-row">
+        <div id="main-bar">
+            <ul class="layui-nav" lay-filter="mainBar" style="background-color: #1d1d1d">
+                <li class="layui-nav-item"><a href="../index.html">Home</a></li>
+                <li class="myPage layui-nav-item"><a href="/users">Myhomepage</a></li>
+                <li class="friend-page layui-nav-item"><a href="#">Friends</a></li>
+                <li class="about layui-nav-item"><a href="#">About</a></li>
+                <li class="user layui-nav-item" data-method="showLoginFrame">
+                    <a href="#"><i class="layui-icon">&#xe612;</i>用户</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div id="bg" style="height: auto">
+    <div >
+        <div class="search-block" >
+            <div class="photo-search-bar">
+                <input id="search-friend" type="text"  placeholder="搜索用户" class="layui-input" style="width: 500px">
+                <a href=javascript:;><i onclick="searchUser($(this))" class="user-search layui-icon" style="font-size: 20px; color: #1e2742;">&#xe615;</i></a>
+            </div>
+        </div>
+
+        <div class="result-block" >
+
+
+            <div class='follow_box layui-row'>
+                <div class='follow_inner'>
+                    <ul class='search-list'>
+
+                    </ul>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+<!--login的代码-->
+<div class="login">
+    <form class="layui-form layui-form-pane" action="" >
+        <div class="layui-form-item">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-block">
+                <input id="user_account" type="text" style="width: 200px" name="user_account" required  lay-verify="username" placeholder="请输入账号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-inline">
+                <input id="user_password" type="password" style="width: 200px" name="user_password" required lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="margin-left: 40px">
+                <button type="reset" class="layui-btn layui-btn"><a style="color: #fbfff6" href="user/signUp.html">注册</a></button>
+                <button class="layui-btn" lay-submit lay-filter="formDemo">登录</button>
+                <button type="reset" class="layui-btn layui-btn">重  置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+</body>
+
+</html>

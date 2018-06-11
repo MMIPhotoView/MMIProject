@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户主界面</title>
+
+
+
+</head>
+
+
+<script src="../javascripts/jquery-3.1.1.js"></script>
+<link rel="stylesheet" href="../layui/css/layui.css">
+<script src="../layui/layui.js"></script>
+
+<!--引入common的js文件-->
+<script src="../javascripts/common.js"></script>
+<!--引入cookie文件-->
+<script src="../javascripts/cookie.js"></script>
+<!--用户模块界面-->
+<script src="../javascripts/user.js"></script>
+<!--引入共享的样式文件-->
+<link rel="stylesheet" href="../stylesheets/common.css">
+<!--引入user的样式文件-->
+<link rel="stylesheet" href="../stylesheets/user.css">
+
+
+
+<body>
+<div id="header">
+    <div class="layui-row">
+        <div id="main-bar">
+            <ul class="layui-nav" lay-filter="mainBar" style="background-color: #1d1d1d">
+                <li class="layui-nav-item"><a href="/">Home</a></li>
+                <li class="layui-nav-item"><a href="/users">MyHomepage</a></li>
+                <li class="friend-page layui-nav-item"><a href="../user/search.html">Friends</a></li>
+                <li class="about layui-nav-item"><a href="#">About</a></li>
+                <li class="user layui-nav-item" data-method="showLoginFrame">
+                    <a href="#"><i class="layui-icon ">&#xe612;</i>用户</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class= "user-main-middle">
+    <div class="layui-row icon-name-desc" style="margin-bottom: 20px">
+        <div class="layui-col-md12">
+            <div class="">
+                <img class="user-icon" data-method="showPhoto" src="../images/kiwi8.jpeg" >
+                <h1 id="name" style="font-size: 30px;color: #ffffff;">space空格</h1>
+                <p id="desc" style="color: #ffffff;">这是一只很懒的空格</p>
+            </div>
+        </div>
+
+        <div class="layui-col-md12 PCD_tab S_bg2">
+            <div class="tab_wrap" style="width: 60%;">
+                <table class="tb_tab" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td class=" current" type="1">
+                                    <a href="javascript:;" onclick="switchBBlock($(this))" class="tab_link">
+                                        <span class="S_txt1 t_link">我的主页</span>
+                                        <span class="ani_border"></span>
+                                    </a>
+                                </td>
+                                <td type="2">
+                                    <a href="javascript:;" onclick="switchBBlock($(this))" current="own" class="tab_link">
+                                        <span class="S_txt1 t_link">我的相册</span>
+                                        <span class="ani_border"></span>
+                                    </a>
+                                </td>
+                                <td type="3">
+                                    <a href="javascript:;" onclick="switchBBlock($(this))" class="tab_link">
+                                        <span class="S_txt1 t_link">管理中心</span>
+                                        <span class="ani_border"></span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="layui-row layui-col-space30 user-dynamic-data">
+            <div class="layui-col-md8">
+                <div class="grid-demo grid-demo-bg1">
+                    <div class="photo-bar">
+                        <ul class="layui-nav" lay-filter="mainBar" style="background-color: #ffffff;">
+                            <li class="layui-nav-item allPhotoButton"><a href='javascript:;' style="color: #423818">全部照片</a></li>
+                            <li class="layui-nav-item">
+                                <a href="javascript:;" style="color: #423818">更多</a>
+                                <dl class="layui-nav-child photo-album"> <!-- 二级菜单 -->
+
+                                </dl>
+                            </li>
+                            <li class="layui-nav-item" style="margin-left: 150px">
+                                <div class="photo-search-bar">
+                                    <input id="search-my-photo" type="text"  placeholder="搜索我的照片" class="layui-input">
+                                    <a href=javascript:;><i class="search-icon layui-icon" style="font-size: 20px; color: #1e2742;">&#xe615;</i></a>
+                                    <a href=javascript:;><i class="search-icon-more layui-icon" style="font-size: 20px; color: #1e2742;">&#xe61a;</i></a>
+                                </div>
+                            </li>
+                            <li class="upload-photo layui-nav-item" style="margin-left: 20px;margin-top: 10px;"> <i class=" layui-icon" style="font-size: 40px; color: #1e2742;">&#xe61f;</i></li>
+                        </ul>
+                    </div>
+
+                    <!--上传图片-->
+                    <div class="upload-photo-block">
+                        <div class="layui-upload">
+                            <div class="layui-upload">
+                                <div class="layui-upload-list">
+                                    <img style="width: 200px" class="layui-upload-img" id="demo1">
+                                    <p id="demoText"></p>
+                                    <!--<div style="margin-top: 50px;margin-left: 10%">-->
+                                        <!--<label class="layui-form-label">图片名称：</label>-->
+                                        <!--<input type="text" style="width: 300px"  placeholder="请输入图片名称"  class="upload-photo-name layui-input">-->
+                                    <!--</div>-->
+                                    <!--<div style="margin-top: 10px;margin-left: 10%">-->
+                                        <!--<label class="layui-form-label">标签：</label>-->
+                                        <!--<input type="text" style="width: 300px"  placeholder="请输入标签" class="upload-photo-label layui-input">-->
+                                    <!--</div>-->
+                                    <!--<div style="margin-top: 10px;margin-left: 10%">-->
+                                        <!--<label class="layui-form-label">描述：</label>-->
+                                        <!--<input type="text" style="width: 300px"  placeholder="请输入描述" class="upload-photo-desc  layui-input">-->
+                                    <!--</div>-->
+                                    <!--<div style="margin-top: 10px;margin-left: 10%">-->
+                                        <!--<label class="layui-form-label">分组：</label>-->
+                                        <!--<select style="margin-top: 10px" class="manage-photo-group upload-photo-group">-->
+
+
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                    <div style="margin-top: 20px;margin-left: 150px;padding-bottom: 30px">
+                                        <button type="button" class="layui-btn" id="upload">确定</button>
+                                        <button type="button" class="layui-btn" id="test1">上传图片</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--搜索模块-->
+                    <div class="search-photo-block">
+                        <ul>
+                            <input id="search-label" type="text"  placeholder="输入标签" class="layui-input">
+                            <input id="search-desc" type="text"  placeholder="输入描述" class="layui-input">
+                        </ul>
+                    </div>
+
+                    <!--个人相片列表在此-->
+                    <div class='allPhoto' >
+
+                    </div>
+                </div>
+            </div>
+            <div class="layui-col-md4">
+                <div class="grid-demo">
+                    <div class="user-data">
+                        <div class="follow">
+                            <ul>
+                                <li><a href="userRelation.html"><h1 class="followNum">0</h1><h1>关注</h1></a></li>
+                                <li style="margin-top :15px;margin-bottom :10px;width:0px; height: 30px; ;border:1px solid #1d1d1d"></li>
+                                <li><a href="userRelation.html"><h1 class="beFollowNum">0</h1><h1>粉丝</h1></a></li>
+                                <li style="margin-top :15px;margin-bottom :10px;width:0px; height: 30px; ;border:1px solid #1d1d1d"></li>
+                                <li><h1 id="photoNum">150</h1><h1>相片</h1></li>
+                            </ul>
+                        </div>
+
+                        <div class="user-info">
+
+                            <div class="user-info-top"></div>
+                            <div class="user-info-middle">
+                                <ul>
+                                    <li id="aid" style="display: none">aid</li>
+                                    <li id="birthday">14</li>
+                                    <li id="sex">男</li>
+                                    <li id="phone">电话：18801589728 </li>
+                                    <li id="hobby" style="border-bottom-style:none;">兴趣爱好</li>
+                                </ul>
+                            </div>
+                            <div class="user-info-low"></div>
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+    <div class="layui-row layui-col-space30 user-photo-album" style="display: none;">
+        <div class="F_main">
+
+            <div class="m_browse_menu clearfix" node-type="album_info">
+                <div class="tit M_txta">相片列表
+                    <!--相册数量-->
+                    <span class="M_txtb photo-album-num">(共0个)</span>
+                </div>
+                <div class="album_count M_txta">
+                    <span class="creat" data-method='albumMangerFrame'>
+                        <a class="M_btn_c" href="javascript:;" >创建专辑</a>
+                    </span>
+                    <!--<span class="sequence">-->
+                        <!--<a class="M_btn_c" href="javascript:;">专辑排序</a>-->
+                    <!--</span>-->
+                </div>
+            </div>
+
+            <!--用户相册列表-->
+            <div class="m_user_albumlist">
+                <ul class="albumlists clearfix">
+                    <li>
+                        <div class='m_fav_album'>
+                            <div class='m_cover m_cover_c'>
+                                <div class='img_wrap'>
+                                    <a title='头像相册' href='javascript:;' undefined=''>
+                                        <img width='150' height='150' class='img' src='http://tva4.sinaimg.cn/crop.0.0.180.180.180/818392e5jw8e9rmhi5e7xj2050050dft.jpg'>
+                                        <span class='count'>12 张</span>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class='detail'>
+                                <p class="title">
+                                    <a class='M_linkb' href='javascript:;' undefined=''>
+                                        <strong title='头像相册'>相册1</strong>
+                                    </a>
+                                </p>
+                                <p class='status M_txtb'>
+                                    <span title='所有人可见' class='M_ico '></span>
+                                    <span class='M_txtb time'>更新于2013-10-20</span>
+                                </p>
+                                <p class='edit M_txtd'>
+                                    <a href='javascript:;' >编辑</a>
+                                    <span class="M_vline"></span>
+                                    <a href='javascript:;' >编辑</a>
+
+                                </p>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="layui-row layui-col-space30 user-data-manage" style="display: none">
+        <div class="manager-user" style="background: #ffffff;">
+            <div class="data-block" >
+                <form class="layui-form" action="#" >
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">名字</label>
+                        <div class="layui-input-block">
+                            <input type="text"  id="m-name" name="name" required  lay-verify="required" placeholder="请输入名字" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">电话号码</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="m-phone" name="phone" required  lay-verify="phone" placeholder="请输入电话号码" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">年龄</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="age" id="m-age" required  lay-verify="number" placeholder="请输入年龄" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">生日</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="bir" id="m-bir" required  lay-verify="bir" placeholder="请输入出生月日" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">性别</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="sex" value="男" title="男">
+                            <input type="radio" name="sex" value="女" title="女" checked>
+                        </div>
+                    </div>
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">个人描述</label>
+                        <div class="layui-input-block">
+                            <textarea name="desc" id="m-desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="modify-data">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<!--login的代码-->
+<div class="login">
+    <form class="layui-form layui-form-pane" action="" >
+        <div class="layui-form-item">
+            <label class="layui-form-label">账号</label>
+            <div class="layui-input-block">
+                <input id="user_account" type="text" style="width: 200px" name="user_account" required  lay-verify="username" placeholder="请输入账号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-inline">
+                <input id="user_password" type="password" style="width: 200px" name="user_password" required lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block" style="margin-left: 40px">
+                <button type="reset" class="layui-btn layui-btn"><a style="color: #fbfff6" href="../user/signUp.html">注册</a></button>
+                <button class="layui-btn" lay-submit lay-filter="formDemo">登录</button>
+                <button type="reset" class="layui-btn layui-btn">重  置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="manage-photo-frame">
+    <div style="margin-top: 50px;margin-left: 10%">
+        <label class="layui-form-label">图片名称：</label>
+        <input type="text" style="width: 300px"  placeholder="请输入图片名称" src="" pid="" class="manage-photo-name layui-input">
+    </div>
+    <div style="margin-top: 10px;margin-left: 10%">
+        <label class="layui-form-label">标签：</label>
+        <input type="text" style="width: 300px"  placeholder="请输入标签" class="manage-photo-label layui-input">
+    </div>
+    <div style="margin-top: 10px;margin-left: 10%">
+        <label class="layui-form-label">描述：</label>
+        <input type="text" style="width: 300px"  placeholder="请输入描述" class="manage-photo-desc layui-input">
+    </div>
+    <div style="margin-top: 10px;margin-left: 10%">
+        <label class="layui-form-label">分组：</label>
+        <select style="margin-top: 10px" class="manage-photo-group">
+
+
+        </select>
+    </div>
+
+    <div style="margin-left: 30%;margin-top: 5%">
+        <button class="layui-btn layui-btn-warm" onclick="deletePhoto($(this))">删除照片</button>
+        <button class="layui-btn layui-btn-warm" onclick="manager_photo($(this))">确定</button>
+        <button class="layui-btn layui-btn-warm" onclick="cencel()">取消</button>
+    </div>
+</div>
+
+<div class="new-group-frame">
+    <div style="margin-top: 30px;margin-left: 30px">
+        <label class="layui-form-label">分组名：</label>
+        <input type="text" style="width: 150px"  placeholder="请输入分组名" class="new-group-name layui-input">
+    </div>
+    <div style="margin-left: 130px;margin-top: 20px">
+        <button class="layui-btn layui-btn-warm" onclick="addNewGroup()">确定</button>
+        <button class="layui-btn layui-btn-warm" onclick="cencel()">取消</button>
+    </div>
+</div>
+
+
+
+<div class="manager-album" style="display: none">
+    <div style="margin-top: 30px;margin-left: 30px">
+        <label class="layui-form-label">相册名：</label>
+        <input type="text" style="width: 150px"  placeholder="请输入相册名" class="album-name layui-input">
+    </div>
+    <div style="margin-left: 130px;margin-top: 20px">
+        <button class="layui-btn layui-btn-warm" onclick="updateAlbum(befAlbumName,$('.album-name').val())">确定</button>
+        <button class="layui-btn layui-btn-warm" onclick="cencel()">取消</button>
+    </div>
+</div>
+
+</body>
+</html>

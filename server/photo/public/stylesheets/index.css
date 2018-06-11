@@ -1,0 +1,57 @@
+
+
+
+.bt{
+    text-align: center;
+}
+.bt > h1{
+    font-size: 50px;
+    font-family: "Al Nile";
+    padding-top: 150px;
+}
+
+#middle-part{
+    background-image: url("../images/kiwi1.jpeg");
+    background-repeat: no-repeat;
+    background-size:100%;
+    height: auto;
+    background-color: #1d1d1d;
+
+}
+
+
+
+
+#main-photo {
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-top: 250px;
+}
+
+
+#main-photo .layui-col-md4 > div {
+
+    margin-right: 10px;
+    margin-left: 10px;
+
+}
+
+.photo > img{
+    margin-top: 20px;
+    width: 100%;
+}
+
+.photo #desc{
+    background-color: #fbfff6
+}
+
+.Bigpic {
+    width: 800px;
+    height: 500px;
+    display: none;
+}
+.Bigpic > img{
+    width: 100%;
+
+}
+

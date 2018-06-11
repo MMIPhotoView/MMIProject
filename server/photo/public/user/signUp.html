@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册主界面</title>
+    <script src="../javascripts/jquery-3.1.1.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../layui/layui.js"></script>
+    <!--用户模块界面-->
+    <script src="../javascripts/user.js"></script>
+    <!--用户注册界面css文件-->
+    <link rel="stylesheet" href="../stylesheets/user.css">
+
+
+</head>
+
+<body>
+
+
+<div class="signup-background">
+
+
+
+    <div class="signup-main-part">
+        <form class="layui-form layui-form-pane" action="">
+            <div class="layui-form-item" style="margin-left: 30px">
+                <label class="layui-form-label">账号</label>
+                <div class="layui-input-block">
+                    <input style="width: 250px" type="text" name="signup_account" required  lay-verify="account" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item" style="margin-left: 30px">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                    <input style="width: 187px" type="password" name="signup_password" required lay-verify="password" placeholder="请输入密码" autocomplete="off" class="layui-input">
+
+                </div>
+                <button style="margin-left: -13px" class="layui-btn" lay-submit lay-filter="sign-up">注册</button>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

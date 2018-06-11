@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录主界面</title>
+    <script src="../javascripts/jquery-3.1.1.js"></script>
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../layui/layui.js"></script>
+    <script src="../javascripts/common.js"></script>
+    <script src="../javascripts/cookie.js"></script>
+
+</head>
+
+<script>
+    function signIn(){
+        $.ajax({
+            type: "POST",
+            url: "/accounts/signIn",
+            data: {user_name:$(".account").val(),
+                password:$(".password").val()},
+            success: function(msg){
+                alert(msg)
+            }
+        });
+    }
+
+</script>
+<body style="margin-left: 200px">
+<div class="login-form">
+<form class="layui-form layui-form-pane" action="" >
+    <div class="layui-form-item">
+        <label class="layui-form-label">输入框</label>
+        <div class="layui-input-block">
+            <input id="user_account" type="text" style="width: 200px" name="user_account" required  lay-verify="username" placeholder="请输入账号" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">密码框</label>
+        <div class="layui-input-inline">
+            <input id="user_password" type="password" style="width: 200px" name="user_password" required lay-verify="pass" placeholder="请输入密码" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+        </div>
+    </div>
+</form>
+</div>
+
+</body>
+</html>

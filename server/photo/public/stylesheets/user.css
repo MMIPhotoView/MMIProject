@@ -1,0 +1,295 @@
+div {
+    border-radius:5px;
+}
+
+.signup-background{
+    background-color: #1d1d1d;
+    width:100%;
+    position:absolute;
+}
+
+.signup-main-part{
+    margin: 400px 400px 100px 400px;
+    width: 450px;
+    height: 500px;
+    background-color: rgba(255, 255, 255, 0)
+}
+
+.user-main-middle {
+    margin: 20px 150px  0px 150px;
+}
+
+.user-photo {
+    background-color: #ffffff;
+}
+
+.photo-bar{
+    background-color: #ffffff;
+    margin-bottom: 15px;
+}
+.photo-search-bar {
+    position: relative;width: 200px;
+}
+
+#search-my-photo {
+    padding-right: 65px;
+}
+
+.search-icon{
+    position: absolute;
+    left: 140px;
+    top: -10px;
+    z-index:10;
+}
+.search-icon-more{
+    position: absolute;
+    left: 170px;
+    top: -10px;
+    z-index:10;
+
+}
+
+.user-data {
+    text-align: center;
+
+}
+
+.user-icon {
+    margin-top: 30px;
+    width:150px;
+    height: 150px;
+    border-radius:50%;
+}
+
+.icon-name-desc {
+    background-image: url("../images/kiwi1.jpeg");
+    text-align: center;
+    height: 350px;
+}
+
+.user-data > div {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.follow {
+    text-align: center;
+    height: 60px;
+}
+
+.follow > ul >li {
+    margin-top: 15px;
+    margin-left:35px;
+    display: inline;
+    float: left;
+}
+
+.user-info-top {
+    height: 30px;
+    margin-top: 20px;
+    border-bottom-style:solid;
+    border-width: 0.5px;
+    border-radius:0px;
+}
+
+
+.user-info-middle > ul >li {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align: left;
+    border-bottom-style:solid;
+    border-width: 0.5px;
+    font-size: 12px;
+}
+
+.user-info-low {
+    border-radius:0px;
+    border-top-style:solid;
+    border-width: 0.5px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+
+
+
+
+/**
+ * 用户关系板块下部
+ */
+.user-relation-low{
+    border-radius:0px;
+    border-top-style:solid;
+    border-width: 0.5px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+
+/**
+ *  新增分组的按钮样式
+ */
+.add-new-group > button{
+    margin-left: 4px;
+    margin-top: 20px;
+
+}
+
+/*个人主界面的个人照片*/
+
+.user-photo-block {
+    background-color: #ffffff;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.user-photo {
+    padding-left: 96px;
+    padding-bottom: 5px;
+    border-radius:0px;
+    border-bottom: solid;
+    border-width: 0.5px;
+}
+
+
+.user-photo > img {
+
+    width: 40%;
+}
+/*用户小界面*/
+.user-small-icon {
+
+}
+
+.user-small-icon ul > li{
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.user-small-icon ul > li > img {
+    width:60px;
+    height: 60px;
+    border-radius:50%;
+}
+
+.upload-photo-block {
+    height: auto;
+    background-color: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: none;
+}
+.search-photo-block {
+    height: 300px;
+    background-color: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: none;
+}
+
+.new-group-frame, .manager-album, .manage-photo-frame{
+    height: 150px;
+    width: 400px;
+    display: none;
+    background-color:#ffffff
+}
+.manage-photo-frame{
+    height: 300px;
+    width: 600px;
+}
+/*用户相册的css*/
+.user-photo-album {
+    margin: 20px 0px  0px 0px;
+    border-radius: 0px;
+    background-color: #ffffff;
+}
+
+
+/*用户相册的css*/
+.F_main {
+    overflow: hidden;
+    width: 950px;
+    clear: both;
+}
+.m_browse_menu {
+    margin: 15px 0 0 0;
+}
+.clearfix {
+    display: block;
+}
+.clearfix {
+    zoom: 1;
+}
+
+.m_browse_menu .operat, .m_browse_menu .phto_count, .m_browse_menu .tit, .m_browse_menu .lf, .m_browse_menu .sa, .m_browse_menu .se, .m_browse_menu .crt {
+    float: left;
+}
+.M_txta, .M_txtb, .M_txtc, .M_txtd {
+    cursor: default;
+}
+.M_txtb {
+    color: #888;
+}
+.m_browse_menu .album_count {
+    margin-top: -10px;
+    line-height: 24px;
+}
+.m_browse_menu .upfile, .m_browse_menu .browse_type, .m_browse_menu .album_count, .m_browse_menu .rt {
+    float: right;
+}
+.m_browse_menu .creat {
+
+    margin-right: 10px;
+    float: left;
+    vertical-align: middle;
+}
+.M_btn_c, .M_btn_c_mk, .M_btn_h, .M_btn_c_a {
+    display: inline-block;
+    border: 1px solid #E2E2E2;
+    padding: 0 10px;
+    height: 22px;
+    line-height: 21px;
+    overflow: hidden;
+    line-height: 24px\9;
+    _line-height: 22px;
+    color: #888;
+}
+.m_user_albumlist {
+    margin: 40px 0 0 0;
+}
+.m_user_albumlist .albumlists {
+    width: 1000px;
+}
+.m_user_albumlist li, .m_user_albumlist li {
+    padding: 0 43px 13px 0;
+}
+.m_user_albumlist .albumlists li {
+    float: left;
+    width: 155px;
+    height: 226px;
+}
+li {
+    list-style: none;
+}
+
+.manager-user{
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.manager-user .data-block {
+    width: 60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.data-block ul li {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.photo-manage{
+    position: relative;
+    top: 50px;
+    left: 600px;
+}
