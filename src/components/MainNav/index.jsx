@@ -38,7 +38,7 @@ class Nav extends React.Component {
   clickHandle() {
 
 
-    
+
 
   }
 }

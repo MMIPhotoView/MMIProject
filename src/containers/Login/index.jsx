@@ -1,7 +1,7 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
-import { getAllPhoto } from '../../fetch/home/home';
 import LoginComponent from '../../components/Login'
+import UserMain from '../../components/UserMain'
 
 import './style.less'
 
@@ -10,19 +10,25 @@ class Login extends React.Component {
         super(props, context);
       this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
       this.state = {
-        data : []
+        data : [],
+        isLogin:false
       }
     }
     render() {
         return (
           <div>
-              <LoginComponent loginHandle = {this.loginHandle.bind(this)}/>
+            {
+              this.state.isLogin
+              ? <LoginComponent loginHandle={this.loginHandle.bind(this)}/>
+              : <UserMain/>
+
+            }
           </div>
         )
     }
 
   componentDidMount() {
-    
+
   }
 
   /**
