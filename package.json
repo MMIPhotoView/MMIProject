@@ -60,7 +60,7 @@
     "react-addons-test-utils": "^15.0.0",
     "react-hot-loader": "^1.2.9",
     "react-redux": "^5.0.7",
-    "react-router": "^4.2.0",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.2.2",
     "resolve-pathname": "^2.2.0",
     "rimraf": "^2.4.3",
