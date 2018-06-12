@@ -17,20 +17,37 @@ class UserTop extends React.Component {
             </div>
           </div>
           <div className={'user-data'}>
+
             <div className={`username`}>
-              UserName
+                {this.props.userData.username}
+                <a href="#" onClick={this.editMyData.bind(this)}>
+                  <span>
+                  <button className={`edit-btn`} >编辑个人资料</button>
+                  </span>
+                </a>
             </div>
+
+
             <ul className={`count-list`}>
               <li className="list-item">
-                18 照片
+                <span>{this.props.userData.photoNums}</span>
+                 照片
+
               </li>
               <li className="list-item">
-                18 关注
+                <span>{this.props.userData.follow}</span>
+                关注
               </li>
               <li className="list-item">
-                18 粉丝
+                <span>{this.props.userData.fans}</span>
+                粉丝
               </li>
             </ul>
+
+            <div className="user-desc">
+              <span>{this.props.userData.desc}</span>
+            </div>
+
           </div>
 
         </div>
@@ -38,6 +55,19 @@ class UserTop extends React.Component {
       </div>
     );
   }
+
+  /**
+   * 修改我的资料的跳转
+   */
+  editMyData() {
+    alert('应该弹出修改资料的界面');
+  }
+
+
+
+
+
+
 }
 
 

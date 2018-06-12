@@ -37,6 +37,7 @@ class UserPage extends React.Component {
     userData.photoNums = 10;
     userData.follow = 5;
     userData.fans = 8;
+    userData.desc = '生活不局限吃饭';
     this.setState({
       userDate:userData
     });
