@@ -1,5 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {hashHistory} from 'react-router'
+
 import './style.less'
 
 class UserTop extends React.Component {
@@ -60,7 +62,7 @@ class UserTop extends React.Component {
    * 修改我的资料的跳转
    */
   editMyData() {
-    alert('应该弹出修改资料的界面');
+    hashHistory.push('/EditUserInfo');
   }
 
 
