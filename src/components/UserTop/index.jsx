@@ -1,6 +1,5 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import {hashHistory} from 'react-router'
 
 import './style.less'
 
@@ -22,7 +21,7 @@ class UserTop extends React.Component {
 
             <div className={`username`}>
                 {this.props.userData.username}
-                <a href="#" onClick={this.editMyData.bind(this)}>
+                <a href="/EditUserInfo" onClick={this.editMyData.bind(this)}>
                   <span>
                   <button className={`edit-btn`} >编辑个人资料</button>
                   </span>
@@ -62,7 +61,6 @@ class UserTop extends React.Component {
    * 修改我的资料的跳转
    */
   editMyData() {
-    hashHistory.push('/EditUserInfo');
   }
 
 
