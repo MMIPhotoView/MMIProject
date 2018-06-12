@@ -10,7 +10,7 @@ import EditUserInfoPage from '../containers/EditUserInfo'
 class RouterMap extends React.Component {
     render() {
         return (
-            <Router history={this.props.history}>
+            <Router>
                 <div>
                     <Nav />
                     <Switch >
