@@ -14,14 +14,28 @@ class Nav extends React.Component {
             </div>
              */}
              <div className='layui-row low'>
-                <div className='col-md-3 logo'><i className="layui-icon layui-icon-face-smile" ></i></div>
-                <div className='col-md-9 nav-list'>
+                <div className='col-md-1 logo'>
+                  <NavLink exact activeClassName='active' className='item' to='/'>
+                    <i className="layui-icon layui-icon-face-smile" ></i>
+                  </NavLink>
+                </div>
+                <div className={`col-md-3`}></div>
+                <div className={`col-md-4 search-bar`}>
+                  <input type="text" className={`search-input`} placeholder={`搜索`}/>
+                  <div className={`input-bg`}>
+                    <i className="layui-icon layui-icon-search" ></i>
+                  </div>
+                </div>
+                <div className={`col-md-3`}></div>
+
+
+                <div className='col-md-1 nav-list'>
                     <div className={'main-menu'}>
                         <div className="collapse navbar-collapse">
-                            <ul className="nav navbar-nav">
-                                <li><NavLink exact activeClassName='active' className='item' to='/'>主页</NavLink></li>
-                                <li><NavLink activeClassName='active' className='item' to='/404'>404</NavLink></li>
-                                <li><NavLink activeClassName='active' className='item nav-user' to='/Login'>
+                            <ul className="nav navbar-nav navbar-right">
+                                {/*<li><NavLink exact activeClassName='active' className='item' to='/'>主页</NavLink></li>*/}
+                                {/*<li><NavLink activeClassName='active' className='item' to='/404'>404</NavLink></li>*/}
+                                <li><NavLink className='item nav-user' to='/Login'>
                                     <span className='glyphicon glyphicon-user'></span>
                                     </NavLink>
                                 </li>
@@ -29,6 +43,7 @@ class Nav extends React.Component {
                         </div>
                     </div>
                 </div>
+
              </div>
 
 
