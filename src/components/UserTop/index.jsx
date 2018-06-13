@@ -12,25 +12,25 @@ class UserTop extends React.Component {
     return (
       <div className='container'>
         <div className='user-top'>
-          <div className={`icon`}>
+          <div className={'icon'}>
             <div className="icon-img">
               <img alt="更改头像" className="be6sR" src="https://instagram.fhkg3-1.fna.fbcdn.net/vp/cad3042055d5dbed9baf5fb61da87da3/5BB51A8F/t51.2885-19/s320x320/23734310_1758883371081152_1640210429378560000_n.jpg"/>
             </div>
           </div>
           <div className={'user-data'}>
 
-            <div className={`username`}>
+            <div className={'username'}>
                 {this.props.userData.username}
-                <a href="/EditUserInfo" onClick={this.editMyData.bind(this)}>
+                <a href="/EditUserInfo">
                   <span>
-                  <button className={`edit-btn`} >编辑个人资料</button>
+                  <button className={'edit-btn'} >编辑个人资料</button>
                   </span>
                 </a>
             </div>
 
 
-            <ul className={`count-list`}>
-              <li className="list-item">
+            <ul className={'count-list'}>
+              <li className="list-item" onClick={this.editMyData}>
                 <span>{this.props.userData.photoNums}</span>
                  照片
 
@@ -61,6 +61,7 @@ class UserTop extends React.Component {
    * 修改我的资料的跳转
    */
   editMyData() {
+    // layer.msg('123')
   }
 
 
