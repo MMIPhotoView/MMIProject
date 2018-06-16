@@ -22,7 +22,7 @@ class Home extends React.Component {
         <Welcome />
         <div style={{marginTop :'5%'}}></div>
         {
-          this.state.data.length ? <PhotoList list = { this.state.data }/> : <div>加载中...</div>
+          this.state.data.length ? <PhotoList isuser='true' list = { this.state.data }/> : <div>加载中...</div>
         }
 
 
