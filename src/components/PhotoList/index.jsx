@@ -1,6 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import PhotoItem from './Item'
+import PhotoItem from './Item1'
 
 import './style.less'
 
