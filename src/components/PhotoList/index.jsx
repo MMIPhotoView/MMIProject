@@ -12,7 +12,7 @@ class PhotoList extends React.Component {
   }
   render() {
     const list = this.props.list
-    console.log(list)
+    // console.log(list)
     return (
       <div className='container main-block'>
         <div className='list-block'>

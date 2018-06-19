@@ -47,7 +47,6 @@ class UserPage extends React.Component {
       return res.json();
     }).then((json) => {
       const data = json;
-      console.log(data)
       this.setState({
         photoData : data
       })

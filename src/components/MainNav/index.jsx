@@ -19,14 +19,14 @@ class Nav extends React.Component {
                     <i className="layui-icon layui-icon-face-smile" ></i>
                   </NavLink>
                 </div>
-                <div className={`col-md-3`}></div>
-                <div className={`col-md-4 search-bar`}>
-                  <input type="text" className={`search-input`} placeholder={`搜索`}/>
-                  <div className={`input-bg`}>
+                <div className={'col-md-3'}></div>
+                <div className={'col-md-4 search-bar'}>
+                  <input type="text" className={'search-input'} placeholder={'搜索'}/>
+                  <div className={'input-bg'}>
                     <i className="layui-icon layui-icon-search" ></i>
                   </div>
                 </div>
-                <div className={`col-md-3`}></div>
+                <div className={'col-md-3'}></div>
 
 
                 <div className='col-md-1 nav-list'>

@@ -36,7 +36,7 @@ class Login extends React.Component {
 
   /**
    * 用户名账号的变化
-   * @param {绑定的dom} e 
+   * @param {绑定的dom} e
    */
   usernameChangeHandle(e) {
       this.setState({
@@ -46,7 +46,7 @@ class Login extends React.Component {
 
   /**
    * 用户密码的变化
-   * @param {绑定的dom} e 
+   * @param {绑定的dom} e
    */
   pwdChangeHandle(e) {
     this.setState({

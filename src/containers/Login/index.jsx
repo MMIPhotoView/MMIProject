@@ -37,7 +37,8 @@ class Login extends React.Component {
    * @param {密码} password
    */
   loginHandle(username,password) {
-    console.log(username,password);
+    // console.log(username,password);
+    alert(username,password);
   }
 
 }
