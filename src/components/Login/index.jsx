@@ -16,7 +16,7 @@ class Login extends React.Component {
     return (
       <div>
         <div id='login-form'>
-            <label>登陆标志</label>
+            <label>登jjaaa陆</label>
             <input type = "text"
                 placeholder = '请输入账号'
                 onChange = {this.usernameChangeHandle.bind(this)}
@@ -62,7 +62,7 @@ class Login extends React.Component {
     const password = this.state.pwd;
     const loginHandle = this.props.loginHandle;
     loginHandle(username,password);
-  
+
 }
 
 
