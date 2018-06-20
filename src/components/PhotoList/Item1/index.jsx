@@ -18,7 +18,7 @@ class Item extends React.Component {
 
             <h3 className='animate-text'>{data.desc}</h3>
             <p className='animate-text'>{ `by:${ data.user_name }` }</p>
-            <span className='animate-text glyphicon glyphicon-heart like'></span>
+            <span className='animate-text glyphicon glyphicon-heart like' onClick={this.like.bind(this)}></span>
             <div className='dots'>
               <span></span>
               <span></span>
@@ -27,6 +27,10 @@ class Item extends React.Component {
           </div>
         </div>
     );
+  }
+
+  like() {
+    layer.msg('点赞');
   }
 }
 

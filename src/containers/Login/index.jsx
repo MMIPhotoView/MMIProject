@@ -3,6 +3,11 @@ import PureRenderMixin from 'react-addons-pure-render-mixin'
 import LoginComponent from '../../components/Login'
 import UserMain from '../UserPage'
 
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
+import * as userInfoActionsFromOtherFile from '../../actions/userinfo.js'
+
 import './style.less'
 
 class Login extends React.Component {
@@ -19,8 +24,8 @@ class Login extends React.Component {
           <div>
             {
               this.state.isLogin
-              ? <LoginComponent loginHandle={this.loginHandle.bind(this)}/>
-              : <UserMain/>
+              ? <UserMain/>
+              : <LoginComponent loginHandle={this.loginHandle.bind(this)}/>
 
             }
           </div>
@@ -28,7 +33,22 @@ class Login extends React.Component {
     }
 
   componentDidMount() {
+    this.isLogin();
+  }
 
+  isLogin() {
+    const userinfo = this.props.userinfo;
+    if (userinfo.username) {
+      // 已经登陆
+      this.setState({
+        isLogin : true
+      });
+    } else {
+      // 未登陆
+      this.setState({
+        isLogin : false
+      });
+    }
   }
 
   /**
@@ -37,11 +57,34 @@ class Login extends React.Component {
    * @param {密码} password
    */
   loginHandle(username,password) {
-    // console.log(username,password);
     alert(username,password);
+    const actions = this.props.userInfoActions;
+    let userinfo = this.props.userinfo;
+    userinfo.username = username;
+    actions.update(userinfo);
+    this.setState ({
+      isLogin:true
+    })
+
+  
   }
 
 }
 
+// -----------------------------redux-react绑定-----------------------------------
+function mapStateToProps(state) {
+  return {
+      userinfo: state.userinfo
+  }
+}
+function mapDispatchToProps(dispatch) {
+  return {
+      userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch)
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);
 
-export default Login
+
