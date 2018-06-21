@@ -1,5 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {Link} from 'react-router-dom'
+
 
 import './style.less'
 
@@ -21,11 +23,11 @@ class UserTop extends React.Component {
 
             <div className={'username'}>
                 {this.props.userData.username}
-                <a href="/EditUserInfo">
+                <Link to="/EditUserInfo">
                   <span>
                   <button className={'edit-btn'} >编辑个人资料</button>
                   </span>
-                </a>
+                </Link>
             </div>
 
 
@@ -33,16 +35,24 @@ class UserTop extends React.Component {
               <li className="list-item" onClick={this.editMyData}>
                 <span>{this.props.userData.photoNums}</span>
                  照片
+              </li>
+              <Link to='/FollowList'>
+              {/* <a href= '#'> */}
+                  <li className="list-item" onClick={this.followListHandle.bind(this)}>
+                    <span>{this.props.userData.follow}</span>
+                    关注
+                </li>
+              {/* </a> */}
+                </Link>
 
-              </li>
+              <Link to='/FollowList'>
               <li className="list-item">
-                <span>{this.props.userData.follow}</span>
-                关注
+                
+                  <span>{this.props.userData.fans}</span>
+                  粉丝
+                
               </li>
-              <li className="list-item">
-                <span>{this.props.userData.fans}</span>
-                粉丝
-              </li>
+              </Link>
             </ul>
 
             <div className="user-desc">
@@ -64,6 +74,22 @@ class UserTop extends React.Component {
     // layer.msg('123')
   }
 
+  /**
+   * 关注列表弹出层
+   */
+  followListHandle() {
+    layer.open({
+      type: 1,
+      title: false,
+      closeBtn: 0,
+      shadeClose: true,
+      skin: 'yourclass',
+      content: '<h1/>11</h1>'
+    });
+
+
+
+  }
 
 
 

@@ -6,6 +6,7 @@ import Nav from '../components/MainNav'
 import Login from '../containers/Login'
 import UserPage from '../containers/UserPage'
 import EditUserInfoPage from '../containers/EditUserInfo'
+import FollowList from '../containers/FollowList'
 
 class RouterMap extends React.Component {
     render() {
@@ -17,6 +18,7 @@ class RouterMap extends React.Component {
                         <Route  exact path='/' component={Home}/>
                         <Route path='/Login' component={Login}/>
                         <Route path='/User' component={UserPage}/>
+                        <Route path='/FollowList' component={FollowList}/>
                         <Route path='/EditUserInfo' component={EditUserInfoPage}/>
                         <Route component={NotFound}/>
                     </Switch>
