@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {Link} from 'react-router-dom';
 
 import './style.less'
 
@@ -33,7 +34,7 @@ class Login extends React.Component {
               <p></p>
               <div className="rem_sub">
                 <div className="rem_sub_l" style={{float:'left'}}>
-                  <p>没有账号？<a href="javascript:void(0);">立即注册</a></p>
+                  <p>没有账号？<Link to='Register'>立即注册</Link></p>
 
                 </div>
                 <label   style={{float:'right', marginRight:'10px'}}>
