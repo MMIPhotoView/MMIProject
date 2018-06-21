@@ -78,14 +78,14 @@ class UserTop extends React.Component {
    * 关注列表弹出层
    */
   followListHandle() {
-    layer.open({
-      type: 1,
-      title: false,
-      closeBtn: 0,
-      shadeClose: true,
-      skin: 'yourclass',
-      content: '<h1/>11</h1>'
-    });
+    // layer.open({
+    //   type: 1,
+    //   title: false,
+    //   closeBtn: 0,
+    //   shadeClose: true,
+    //   skin: 'yourclass',
+    //   content: '<h1/>11</h1>'
+    // });
 
 
 
