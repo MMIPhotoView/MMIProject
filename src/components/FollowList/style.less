@@ -1,0 +1,62 @@
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+.fade-in {
+  -webkit-animation: fadeIn ease .3s forwards;
+          animation: fadeIn ease .3s forwards;
+}
+@-webkit-keyframes fadeOut {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 0;
+  }
+}
+.fade-out {
+  -webkit-animation: fadeOut ease .3s forwards;
+          animation: fadeOut ease .3s forwards;
+}
+
+.modal.fade-in{
+  // pointer-events: none;
+  background-color: black;
+}
+.followList {
+
+  border-radius: 5px;
+  text-align: center;
+  background-color: #ffffff;
+  position: absolute;
+  z-index: 99999;
+  top: 30%;
+  left: 35%;
+  width: 30%;
+
+}
+
+
+
+
+

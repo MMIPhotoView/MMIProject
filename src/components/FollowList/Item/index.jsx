@@ -12,10 +12,15 @@ class FollowItem extends React.Component {
   render() {
     return (
       <div>
-        <div>item</div>
+        <button style={{height:'30px'}} onClick={this.test} >sdsdsdsdsdsdsds</button>
       </div>
     );
   }
+
+  test() {
+    alert('123')
+  }
+
 }
 
 

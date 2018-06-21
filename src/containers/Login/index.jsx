@@ -57,7 +57,7 @@ class Login extends React.Component {
    * @param {密码} password
    */
   loginHandle(username,password) {
-    alert(username,password);
+    // alert(username,password);
     const actions = this.props.userInfoActions;
     let userinfo = this.props.userinfo;
     userinfo.username = username;

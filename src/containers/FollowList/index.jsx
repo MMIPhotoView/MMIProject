@@ -1,6 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import FollwoListComponent from '../../components/FollowList'
+// import FollwoListComponent from '../../components/FollowList'
 
 
 
@@ -12,7 +12,7 @@ class FollowList extends React.Component {
   render() {
     return (
       <div>
-        <FollwoListComponent/>
+        {/* <FollwoListComponent/> */}
       </div>
     );
   }

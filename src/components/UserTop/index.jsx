@@ -1,6 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Link} from 'react-router-dom'
+import FollowListComponent from '../FollowList'
 
 
 import './style.less'
@@ -8,10 +9,15 @@ import './style.less'
 class UserTop extends React.Component {
   constructor(props, context) {
     super(props,context);
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate();
+    this.state = {
+      followOpen:false
+    }
   }
   render() {
     return (
+      <div>
+      
       <div className='container'>
         <div className='user-top'>
           <div className={'icon'}>
@@ -29,28 +35,24 @@ class UserTop extends React.Component {
                   </span>
                 </Link>
             </div>
-
-
             <ul className={'count-list'}>
               <li className="list-item" onClick={this.editMyData}>
                 <span>{this.props.userData.photoNums}</span>
                  照片
               </li>
-              <Link to='/FollowList'>
+              {/* <Link to='/FollowList'> */}
               {/* <a href= '#'> */}
-                  <li className="list-item" onClick={this.followListHandle.bind(this)}>
+                <li className="list-item" onClick={this.onCloseListHandle.bind(this)}>
                     <span>{this.props.userData.follow}</span>
                     关注
                 </li>
               {/* </a> */}
-                </Link>
+                {/* </Link> */}
 
               <Link to='/FollowList'>
               <li className="list-item">
-                
                   <span>{this.props.userData.fans}</span>
                   粉丝
-                
               </li>
               </Link>
             </ul>
@@ -60,9 +62,9 @@ class UserTop extends React.Component {
             </div>
 
           </div>
-
         </div>
-
+        </div>
+        <FollowListComponent visible={this.state.followOpen} onClose={this.onCloseListHandle.bind(this)} />
       </div>
     );
   }
@@ -77,19 +79,13 @@ class UserTop extends React.Component {
   /**
    * 关注列表弹出层
    */
-  followListHandle() {
-    // layer.open({
-    //   type: 1,
-    //   title: false,
-    //   closeBtn: 0,
-    //   shadeClose: true,
-    //   skin: 'yourclass',
-    //   content: '<h1/>11</h1>'
-    // });
-
-
-
+  onCloseListHandle() {
+    this.setState({
+      followOpen : !this.state.followOpen
+    });
   }
+
+
 
 
 
