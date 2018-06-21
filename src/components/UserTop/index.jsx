@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {Link} from 'react-router-dom'
 
 import './style.less'
 
@@ -21,11 +22,11 @@ class UserTop extends React.Component {
 
             <div className={'username'}>
                 {this.props.userData.username}
-                <a href="/EditUserInfo">
+                <Link to="/EditUserInfo">
                   <span>
                   <button className={'edit-btn'} >编辑个人资料</button>
                   </span>
-                </a>
+                </Link>
             </div>
 
 
