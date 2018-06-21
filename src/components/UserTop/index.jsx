@@ -34,16 +34,22 @@ class UserTop extends React.Component {
               <li className="list-item" onClick={this.editMyData}>
                 <span>{this.props.userData.photoNums}</span>
                  照片
+              </li>
+              <Link to='/FollowList'>
+                <li className="list-item">
+                    <span>{this.props.userData.follow}</span>
+                    关注
+                </li>
+                </Link>
 
-              </li>
+              <Link to='/FollowList'>
               <li className="list-item">
-                <span>{this.props.userData.follow}</span>
-                关注
+                
+                  <span>{this.props.userData.fans}</span>
+                  粉丝
+                
               </li>
-              <li className="list-item">
-                <span>{this.props.userData.fans}</span>
-                粉丝
-              </li>
+              </Link>
             </ul>
 
             <div className="user-desc">
