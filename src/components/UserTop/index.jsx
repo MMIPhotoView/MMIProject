@@ -2,6 +2,7 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Link} from 'react-router-dom'
 
+
 import './style.less'
 
 class UserTop extends React.Component {
@@ -36,10 +37,12 @@ class UserTop extends React.Component {
                  照片
               </li>
               <Link to='/FollowList'>
-                <li className="list-item">
+              {/* <a href= '#'> */}
+                  <li className="list-item" onClick={this.followListHandle.bind(this)}>
                     <span>{this.props.userData.follow}</span>
                     关注
                 </li>
+              {/* </a> */}
                 </Link>
 
               <Link to='/FollowList'>
@@ -71,6 +74,22 @@ class UserTop extends React.Component {
     // layer.msg('123')
   }
 
+  /**
+   * 关注列表弹出层
+   */
+  followListHandle() {
+    layer.open({
+      type: 1,
+      title: false,
+      closeBtn: 0,
+      shadeClose: true,
+      skin: 'yourclass',
+      content: '<h1/>11</h1>'
+    });
+
+
+
+  }
 
 
 
