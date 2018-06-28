@@ -30,7 +30,7 @@ class UserPage extends React.Component {
         <UserTop userinfo = { this.state.userData }/>
         <div style={{marginTop:'4%'}}></div>
         {
-          this.state.photoData.length ? <PhotoList list = { this.state.photoData }/> : <div>加载中...</div>
+          this.state.photoData.length ? <PhotoList isMain={false} list = { this.state.photoData }/> : <div>加载中...</div>
         }
 
       </div>
