@@ -196,9 +196,10 @@ router.post('/deleteAlbum',function (req, res, next) {
 });
 
 router.get('/getAllPhoto',function (req, res, next) {
-    photoService.getHotPhotoList(100,1,function (result) {
+
+    photoService.getAllPhoto(function(result) {
         res.json(result);
-    });
+    })
 })
 
 

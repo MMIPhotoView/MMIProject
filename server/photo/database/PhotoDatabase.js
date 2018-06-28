@@ -29,6 +29,25 @@ function PhotoDatabase(){
         );
     }
 
+    /**
+     * 获取所有照片
+     * @param {*} callback
+     */
+    this.getAllPhoto = function (callback) {
+        // var pageNum = (page-1) * num;
+        // console.log(num)
+        // console.log(pageNum)
+        var sql = 'select * from t_photo';
+        db.all(sql,function (err,result) {
+                if (err) {
+                    console.log('fail on add ' + err);
+                    callback && callback(err);
+                } else {
+                    callback(result)
+                }
+            }
+        );
+    }
 
     /**
      * 上传照片

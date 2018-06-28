@@ -20,6 +20,18 @@ exports.getHotPhotoList = function (num, page,callback) {
 }
 
 /**
+ * 获取首页所有列表
+ * @param callback
+ */
+exports.getAllPhoto = function (callback) {
+    pd.getAllPhoto(function(result){
+        callback(result);
+    });
+}
+
+
+
+/**
  * 上传照片逻辑层   还要写判断是否存在
  * @param photo
  * @param callback

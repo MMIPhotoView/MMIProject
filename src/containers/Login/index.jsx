@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux'
 import { userLoginIn } from '../../fetch/User/UserApi'
 
 import * as userInfoActionsFromOtherFile from '../../actions/userinfo.js'
+import * as storeActionFromFile from '../../actions/store.js'
 
 import './style.less'
 
@@ -70,6 +71,10 @@ class Login extends React.Component {
         // 登陆成功
         userinfo.username = json.account.id;
         actions.update(userinfo);
+        
+        // 初始化收藏列表
+        this.initStoreList();
+
         // userinfo.userid = json.id 没写到里面
         this.setState ({
           isLogin:true,
@@ -82,10 +87,19 @@ class Login extends React.Component {
     
     // userinfo.username = username;
     // actions.update(userinfo);
+  }
 
-    
-
-  
+  /**
+   * 初始化照片列表
+   */
+  initStoreList() {
+    // 在此获取照片收藏列表(请求服务器)
+    const storeActions = this.props.storeActions;
+    storeActions.add(2);
+    storeActions.add(3);
+    storeActions.add(4);
+    storeActions.add(5);
+    storeActions.add(6);
   }
 
 }
@@ -98,7 +112,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-      userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch)
+      userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch),
+      storeActions: bindActionCreators(storeActionFromFile, dispatch)
   }
 }
 export default connect(

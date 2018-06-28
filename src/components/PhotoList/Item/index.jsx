@@ -20,9 +20,9 @@ class Home extends React.Component {
           </div>
 
           <div className='cont'>
-            <span className='store'>{`用户：${data.user_name}`}</span>
-            <div className='user-icon'><img src="../../../images/yeoman.png" alt="头像"/></div>
-            <div className='user-name'><span>{`相片：${data.photo_name}`}</span></div>
+            <span className='store'>{`标签：${data.label}`}</span>
+            {/* <div className='user-icon'><img src="../../../images/yeoman.png" alt="头像"/></div> */}
+            <div className='user-name'><span>{`相片：${data.name}`}</span></div>
           </div>
 
         </div>
