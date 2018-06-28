@@ -41,7 +41,7 @@ router.post('/getUserInfo',function(req,res,next){
     var aid = req.body.user_aid;   //主界面传过来user_aid
     uis.queryUserinfoByAid(aid,function (result) {
         //console.log(result)
-        res.json(result);
+        res.json(result[0]);
         // res.send(result)
     });
 

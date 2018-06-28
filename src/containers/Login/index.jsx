@@ -5,6 +5,7 @@ import UserMain from '../UserPage'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { userLoginIn } from '../../fetch/User/UserApi'
 
 import * as userInfoActionsFromOtherFile from '../../actions/userinfo.js'
 
@@ -16,7 +17,8 @@ class Login extends React.Component {
       this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
       this.state = {
         data : [],
-        isLogin:false
+        isLogin:false,
+        userId : ''
       }
     }
     render() {
@@ -24,7 +26,7 @@ class Login extends React.Component {
           <div>
             {
               this.state.isLogin
-              ? <UserMain/>
+              ? <UserMain userId = {this.state.userId}/>
               : <LoginComponent loginHandle={this.loginHandle.bind(this)}/>
 
             }
@@ -57,14 +59,31 @@ class Login extends React.Component {
    * @param {密码} password
    */
   loginHandle(username,password) {
-    // alert(username,password);
     const actions = this.props.userInfoActions;
     let userinfo = this.props.userinfo;
-    userinfo.username = username;
-    actions.update(userinfo);
-    this.setState ({
-      isLogin:true
-    })
+
+    const result = userLoginIn(username, password);
+    result.then(res => {
+      return res.json();
+    }).then(json => {
+      if(json.isLogin) {
+        // 登陆成功
+        userinfo.username = json.account.id;
+        actions.update(userinfo);
+        // userinfo.userid = json.id 没写到里面
+        this.setState ({
+          isLogin:true,
+          userid : json.account.id
+        });
+      } else {
+        layer.msg('帐号密码错误', {icon: 5});
+      }
+    });
+    
+    // userinfo.username = username;
+    // actions.update(userinfo);
+
+    
 
   
   }

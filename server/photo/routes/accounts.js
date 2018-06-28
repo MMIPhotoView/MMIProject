@@ -11,12 +11,20 @@ router.use(bodyParser.urlencoded({ extended: false }));
  * 登录的路由
  */
 router.post('/signIn', function(req, res, next) {
-    //console.log('客户端'+req.body.user_account)
+    console.log('客户端'+req.body.user_account)
     var userAccount = new UserAccount();
     userAccount.setAccount(req.body.user_account.toString());
     userAccount.setPassword(req.body.user_password.toString());
     accountService.login(userAccount,function (result) {
-        res.json(result);
+
+        console.log(result)
+        var ret = {};
+        ret.isLogin = result[0];
+        if(result[0]) {
+            ret.account = result[2];
+        }
+
+        res.json(ret);
     });
 });
 

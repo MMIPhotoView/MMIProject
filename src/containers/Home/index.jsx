@@ -24,8 +24,6 @@ class Home extends React.Component {
         {
           this.state.data.length ? <PhotoList isuser='true' list = { this.state.data }/> : <div>加载中...</div>
         }
-
-
       </div>
     );
   }

@@ -5,6 +5,11 @@ import UserTop from '../../components/UserTop'
 import PhotoList from '../../components/PhotoList'
 
 import { getAllPhoto} from '../../fetch/home/home';
+import {getUserData} from '../../fetch/User/UserApi'
+
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as userInfoActionsFromOtherFile from '../../actions/userinfo.js'
 
 import './style.less'
 
@@ -14,14 +19,15 @@ class UserPage extends React.Component {
     super(props,context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     this.state = {
-      userDate : {},
-      photoData : []
+      userData : {},
+      photoData : [],
+      userId : ''
     }
   }
   render() {
     return (
       <div>
-        <UserTop userData={this.state.userDate}/>
+        <UserTop userinfo = { this.state.userData }/>
         <div style={{marginTop:'4%'}}></div>
         {
           this.state.photoData.length ? <PhotoList list = { this.state.photoData }/> : <div>加载中...</div>
@@ -32,30 +38,67 @@ class UserPage extends React.Component {
   }
 
   componentDidMount() {
-    const userData = {};
-    userData.username = '步步高';
-    userData.photoNums = 10;
-    userData.follow = 5;
-    userData.fans = 8;
-    userData.desc = '生活不局限吃饭';
-    this.setState({
-      userDate:userData
-    });
+    
+    this.getUserDataById();
+    
+    // this.setState({
+    //   userDate:userData
+    // });
 
     const result = getAllPhoto();
-    result.then((res) => {
-      return res.json();
-    }).then((json) => {
-      const data = json;
-      this.setState({
-        photoData : data
-      })
-    });
+      result.then((res) => {
+        return res.json();
+      }).then((json) => {
+        const data = json;
+        this.setState({
+          photoData : data
+        })
+      });
 
   }
 
+  /**
+   * 根据id字段请求用户信息
+   */
+  getUserDataById() {
+    if (this.props.userinfo.username != null) {
+      const result = getUserData(this.props.userinfo.username);
+      if (result != null) {
+        // 加载数据
+        result.then((res) => {
+          return res.json();
+        }).then((json) => {
+          const resultData = json;
+          this.setState({
+            userData : resultData,
+            text : '3'
+          });
+        });
+      } else {
+        // 跳转登陆页面
+      }
+    } else {
+      // 未登陆，跳转登陆界面
+    }
+  }
 }
 
 
 
-export default UserPage;
+
+
+// -----------------------------redux-react绑定-----------------------------------
+function mapStateToProps(state) {
+  return {
+      userinfo: state.userinfo
+  }
+}
+function mapDispatchToProps(dispatch) {
+  return {
+      userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch)
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(UserPage);

@@ -17,7 +17,6 @@ class UserTop extends React.Component {
   render() {
     return (
       <div>
-      
       <div className='container'>
         <div className='user-top'>
           <div className={'icon'}>
@@ -28,7 +27,7 @@ class UserTop extends React.Component {
           <div className={'user-data'}>
 
             <div className={'username'}>
-                {this.props.userData.username}
+                {this.props.userinfo.name}
                 <Link to="/EditUserInfo">
                   <span>
                   <button className={'edit-btn'} >编辑个人资料</button>
@@ -37,13 +36,13 @@ class UserTop extends React.Component {
             </div>
             <ul className={'count-list'}>
               <li className="list-item" onClick={this.editMyData}>
-                <span>{this.props.userData.photoNums}</span>
+                <span>{this.props.userinfo.photoNums}</span>
                  照片
               </li>
               {/* <Link to='/FollowList'> */}
               {/* <a href= '#'> */}
                 <li className="list-item" onClick={this.onCloseListHandle.bind(this)}>
-                    <span>{this.props.userData.follow}</span>
+                    <span>{this.props.userinfo.follow}</span>
                     关注
                 </li>
               {/* </a> */}
@@ -51,14 +50,14 @@ class UserTop extends React.Component {
 
               <Link to='/FollowList'>
               <li className="list-item">
-                  <span>{this.props.userData.fans}</span>
+                  <span>{this.props.userinfo.fans}</span>
                   粉丝
               </li>
               </Link>
             </ul>
 
             <div className="user-desc">
-              <span>{this.props.userData.desc}</span>
+              <span>{this.props.userinfo.desc}</span>
             </div>
 
           </div>
@@ -68,6 +67,9 @@ class UserTop extends React.Component {
       </div>
     );
   }
+
+
+  
 
   /**
    * 修改我的资料的跳转
@@ -84,12 +86,6 @@ class UserTop extends React.Component {
       followOpen : !this.state.followOpen
     });
   }
-
-
-
-
-
-
 
 }
 
