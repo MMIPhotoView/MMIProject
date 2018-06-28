@@ -21,16 +21,17 @@ class UserPage extends React.Component {
     this.state = {
       userData : {},
       photoData : [],
-      userId : ''
+      isme:false
     }
   }
   render() {
+    console.log()
     return (
       <div>
-        <UserTop userinfo = { this.state.userData }/>
+        <UserTop isme={this.state.isme} userinfo = { this.state.userData }/>
         <div style={{marginTop:'4%'}}></div>
         {
-          this.state.photoData.length ? <PhotoList isMain={false} list = { this.state.photoData }/> : <div>加载中...</div>
+          this.state.photoData.length ? <PhotoList isme={this.state.isme} isMain={false} list = { this.state.photoData }/> : <div>加载中...</div>
         }
 
       </div>
@@ -41,9 +42,7 @@ class UserPage extends React.Component {
     
     this.getUserDataById();
     
-    // this.setState({
-    //   userDate:userData
-    // });
+    this.isMe();
 
     const result = getAllPhoto();
       result.then((res) => {
@@ -58,11 +57,32 @@ class UserPage extends React.Component {
   }
 
   /**
+   * 打开的是否自己的首页
+   */
+  isMe(){
+    // 首先获取userinfo
+    if (this.props.userinfo.username != null && this.props.userinfo.username!=='') {
+      if (this.props.userinfo.username == this.props.match.params.id) {
+        // 登陆的帐号和访问的一样
+        this.setState({
+          isme : true
+        });
+      }
+    } else {
+      this.setState({
+        isme : false
+      });
+    }
+
+  }
+
+  /**
    * 根据id字段请求用户信息
    */
   getUserDataById() {
-    if (this.props.userinfo.username != null) {
-      const result = getUserData(this.props.userinfo.username);
+    console.log(this.props.match.params.id != null)
+    if (this.props.match.params.id != null) {
+      const result = getUserData(this.props.match.params.id);
       if (result != null) {
         // 加载数据
         result.then((res) => {
@@ -70,15 +90,16 @@ class UserPage extends React.Component {
         }).then((json) => {
           const resultData = json;
           this.setState({
-            userData : resultData,
-            text : '3'
+            userData : resultData
           });
         });
       } else {
         // 跳转登陆页面
       }
     } else {
-      // 未登陆，跳转登陆界面
+      // 未登陆，跳转主界面
+      this.props.history.push('/');
+
     }
   }
 }

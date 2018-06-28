@@ -1,7 +1,8 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import LoginComponent from '../../components/Login'
-import UserMain from '../UserPage'
+// import UserMain from '../UserPage'
+import {BrowserRouter} from 'react-router-dom'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -19,16 +20,17 @@ class Login extends React.Component {
       this.state = {
         data : [],
         isLogin:false,
-        userId : ''
+        userid : ''
       }
     }
     render() {
         return (
           <div>
             {
-              this.state.isLogin
-              ? <UserMain userId = {this.state.userId}/>
-              : <LoginComponent loginHandle={this.loginHandle.bind(this)}/>
+              // this.state.isLogin
+              // ? <UserMain userId = {this.state.userId}/>
+              // :
+              <LoginComponent loginHandle={this.loginHandle.bind(this)}/>
 
             }
           </div>
@@ -46,6 +48,8 @@ class Login extends React.Component {
       this.setState({
         isLogin : true
       });
+      this.props.history.push(`/User/${userinfo.username}`)
+
     } else {
       // 未登陆
       this.setState({
@@ -80,6 +84,12 @@ class Login extends React.Component {
           isLogin:true,
           userid : json.account.id
         });
+
+        this.props.history.push(`/User/${json.account.id}`)
+        
+
+
+
       } else {
         layer.msg('帐号密码错误', {icon: 5});
       }

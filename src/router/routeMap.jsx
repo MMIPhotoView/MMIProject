@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import { BrowserRouter ,Route, Switch} from 'react-router-dom'
 import Home from '../containers/Home'
 import NotFound from '../containers/404'
 import Nav from '../components/MainNav'
@@ -12,13 +12,13 @@ import Register from '../containers/Register'
 class RouterMap extends React.Component {
     render() {
         return (
-            <Router>
+            <BrowserRouter >
                 <div>
                     <Nav />
                     <Switch >
                         <Route  exact path='/' component={Home}/>
                         <Route path='/Login' component={Login}/>
-                        <Route path='/User' component={UserPage}/>
+                        <Route path='/User/:id' component={UserPage}/>
                         <Route path='/FollowList' component={FollowList}/>
                         <Route path='/EditUserInfo' component={EditUserInfoPage}/>
                         <Route path='/Register' component={Register}/>
@@ -26,7 +26,7 @@ class RouterMap extends React.Component {
                     </Switch>
                 </div>
 
-            </Router>
+            </BrowserRouter>
         )
     }
 }
