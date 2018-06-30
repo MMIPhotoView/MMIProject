@@ -9,6 +9,7 @@ import { userLoginIn } from '../../fetch/User/UserApi'
 
 import * as userInfoActionsFromOtherFile from '../../actions/userinfo.js'
 import * as storeActionFromFile from '../../actions/store.js'
+import TweenOne from 'rc-tween-one'
 
 import './style.less'
 
@@ -24,6 +25,12 @@ class Login extends React.Component {
     }
     render() {
         return (
+          <TweenOne animation={
+            [
+              {x : '-1200px',duration:0},
+              {x : '0px',duration:400 }
+            ]
+          }>
           <div>
             {
               // this.state.isLogin
@@ -33,6 +40,7 @@ class Login extends React.Component {
 
             }
           </div>
+          </TweenOne>
         )
     }
 

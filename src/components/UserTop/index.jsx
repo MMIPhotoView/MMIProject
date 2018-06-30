@@ -108,6 +108,7 @@ class UserTop extends React.Component {
    * @param {用户id} id
    */
   toOtherUser(id) {
+    
     const toOU = this.props.toOtherUser;
     toOU(id);
   }

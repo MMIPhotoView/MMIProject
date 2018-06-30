@@ -4,6 +4,7 @@ import RouteMap from '../router/routeMap';
 import Upload from './Upload'
 
 
+
 import 'antd/dist/antd.css'
 import './style.less'
 
@@ -21,12 +22,16 @@ class App extends React.Component {
   }
 
   render() {
-
     return (
      <div className='main-container'>
         <div className='header'>
 
+
+          
+          
           <RouteMap/>
+
+
         </div>
        <Upload/>
      </div>

@@ -9,6 +9,8 @@ import * as storeActionFromFile from '../../actions/store.js'
 
 import { getAllPhoto} from '../../fetch/home/home';
 
+import TweenOne from 'rc-tween-one';
+
 
 class Home extends React.Component {
   constructor(props, context) {
@@ -23,13 +25,18 @@ class Home extends React.Component {
   render() {
 
     return (
-      <div className="index">
-        <Welcome />
-        <div style={{marginTop :'5%'}}></div>
-        {
-          this.state.data.length ? <PhotoList storeHandle={this.storeHandle.bind(this)} storeList={this.state.storeList} isMain={true} list = { this.state.data }/> : <div>加载中...</div>
-        }
-      </div>
+      <TweenOne animation={[
+        {x : '-1200px',duration:0},
+        {x : '0px',duration:500 }
+      ]}>
+        <div className="index">
+          <Welcome />
+          <div style={{marginTop :'5%'}}></div>
+          {
+            this.state.data.length ? <PhotoList storeHandle={this.storeHandle.bind(this)} storeList={this.state.storeList} isMain={true} list = { this.state.data }/> : <div>加载中...</div>
+          }
+        </div>
+      </TweenOne>
     );
   }
 

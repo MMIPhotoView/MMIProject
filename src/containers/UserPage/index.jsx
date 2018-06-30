@@ -10,6 +10,7 @@ import {getUserData,getUserFollowList, getUserFansList} from '../../fetch/User/U
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as userInfoActionsFromOtherFile from '../../actions/userinfo.js'
+import TweenOne from 'rc-tween-one'
 
 import './style.less'
 
@@ -28,8 +29,13 @@ class UserPage extends React.Component {
   }
   render() {
     return (
+      <TweenOne animation={[
+        {x : '-1200px',duration:0},
+        {x : '0px',duration:500 }
+      ]}>
       <div>
         <UserTop
+        style={{marginTop:'50px'}}
           toOtherUser = {this.toOtherUser.bind(this)}
           isme={this.state.isme}
           userinfo = { this.state.userData }
@@ -51,6 +57,7 @@ class UserPage extends React.Component {
         }
 
       </div>
+      </TweenOne>
     );
   }
 

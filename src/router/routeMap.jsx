@@ -9,6 +9,7 @@ import EditUserInfoPage from '../containers/EditUserInfo'
 import FollowList from '../containers/FollowList'
 import Register from '../containers/Register'
 
+
 class RouterMap extends React.Component {
     render() {
         return (
@@ -23,6 +24,7 @@ class RouterMap extends React.Component {
                         <Route path='/EditUserInfo' component={EditUserInfoPage}/>
                         <Route path='/Register' component={Register}/>
                         <Route component={NotFound}/>
+
                     </Switch>
                 </div>
 
