@@ -7,7 +7,10 @@ import './style.less'
 class FollowItem extends React.Component {
   constructor(props, context) {
     super(props,context);
-    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate();
+    this.state={
+      isFollow : false
+    }
   }
   render() {
     return (
@@ -22,7 +25,13 @@ class FollowItem extends React.Component {
             <div className='ifo_2'>bbbbsadsafsafsabbbbbbbb</div>
           </div>
           <div className='boder button'>
-            <button style={{width:'80%',height:'80%'}} onClick={this.test} >关注</button>
+            {
+              this.state.isFollow
+                ? <button style={{width:'80%',height:'80%'}} onClick={this.test.bind(this)} >关注</button>
+                : <button style={{width:'80%',height:'80%'}} onClick={this.test.bind(this)} >未关注</button>
+
+            }
+
           </div>
         </div>
 
@@ -34,8 +43,13 @@ class FollowItem extends React.Component {
   }
 
   test() {
-    alert('123')
     //alert(document.getElementsByClassName('boder button').innerHTML);
+    this.setState({
+      isFollow : true
+    })
+
+
+    console.log(123)
   }
 
 }
