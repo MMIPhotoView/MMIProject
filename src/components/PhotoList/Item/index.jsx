@@ -1,19 +1,24 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import Modify from './Modify';
 
 import './style.less'
-
 
 class Home extends React.Component {
   constructor(props, context) {
     super(props,context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
 
+    this.state = { visible: false }
+
   }
   render() {
     const data =this.props.data
     return (
       <div className='photo-block left'>
+        <div>
+          <Modify/>
+        </div>
 
           <div className='pic' onClick={this.picClickHandle.bind(this)}>
             <img src="../../../images/banner.jpg" alt="图片"/>

@@ -20,7 +20,7 @@ class Login extends React.Component {
         <div className="login_m">
           <div className="login_boder" >
             <div className="login_padding">
-              <h2>用户名</h2>
+              <h2 style={{paddingTop:'12%'}}>用户名</h2>
 
               <label style={{height:'45px'}}>
                 <input type="text" id="username" className="txt_input txt_input2" placeholder = 'Your Username'
