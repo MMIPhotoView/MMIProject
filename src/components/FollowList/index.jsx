@@ -10,7 +10,6 @@ class FollowList extends React.Component {
     super(props,context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
     this.state = {
-      data : [],
       isFixed : true
     }
   }
@@ -43,15 +42,7 @@ class FollowList extends React.Component {
       this.render = this.renderCurrent;
     }
   
-    // 初始化数据
-    const item = [
-                    {name:'name',fans:'12', follow:'13'},
-                    {name:'name2',fans:'122', follow:'213'},
-                    {name:'name3',fans:'112', follow:'313'}
-                ];
-    this.setState({
-      data : item
-    });
+    
   }
 
   componentWillReceiveProps(np){
@@ -77,8 +68,8 @@ class FollowList extends React.Component {
     </div>
     <div className='followList' style={{display:visible?'inline':'none'}}>
           {
-            this.state.data.map((item, index) => {
-              return <Item key={index} data = {item}/>
+            this.props.list.map((item, index) => {
+              return <Item toOtherUser={this.props.toOtherUser.bind(this)} key={index} data = {item}/>
             })
           }
         </div>

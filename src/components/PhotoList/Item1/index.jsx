@@ -1,5 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
+import {Link} from 'react-router-dom'
 
 import './style.less'
 
@@ -20,7 +21,9 @@ class Item extends React.Component {
           <div className='text'>
 
             <h3 className='animate-text'>{data.desc}</h3>
-            <p className='animate-text'>{ `by:${ data.name }` }</p>
+            <Link to={`User/${data.aid}`}>
+              <p className='animate-text'>{ `by:${ data.name }` }</p>
+            </Link>
             <span className='animate-text glyphicon glyphicon-heart like'  style={{color:this.state.isLike?'red':'white'}} onClick={this.like.bind(this)}></span>
             <div className='dots'>
               <span></span>

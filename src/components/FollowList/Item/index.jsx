@@ -13,16 +13,23 @@ class FollowItem extends React.Component {
     }
   }
   render() {
+    const data = this.props.data;
     return (
       <div className='boder'>
 
         <div className='boder selection'>
           <div className='boder img_wrap'>
-            <img alt="更改头像" className='img_icon' src=""/>
+
+            <img
+              alt="更改头像"
+              className='img_icon'
+              src={'https://instagram.fhkg3-1.fna.fbcdn.net/vp/cad3042055d5dbed9baf5fb61da87da3/5BB51A8F/t51.2885-19/s320x320/23734310_1758883371081152_1640210429378560000_n.jpg'}
+            />
+
           </div>
           <div className='boder ifo_wrap'>
-            <div className='ifo_1'>aaaaaaaaa</div>
-            <div className='ifo_2'>bbbbsadsafsafsabbbbbbbb</div>
+            <div className='ifo_1' >{data.name}</div>
+            <div className='ifo_2'>{data.desc}</div>
           </div>
           <div className='boder button'>
             {
@@ -46,10 +53,12 @@ class FollowItem extends React.Component {
     //alert(document.getElementsByClassName('boder button').innerHTML);
     this.setState({
       isFollow : true
-    })
+    });
+  }
 
-
-    console.log(123)
+  enterPage() {
+    const to = this.props.toOtherUser
+    to(this.props.data.aid)
   }
 
 }

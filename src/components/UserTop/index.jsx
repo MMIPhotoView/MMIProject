@@ -11,7 +11,8 @@ class UserTop extends React.Component {
     super(props,context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate();
     this.state = {
-      followOpen:false
+      followOpen:false,
+      fansOpen:false
     }
   }
   render() {
@@ -48,12 +49,10 @@ class UserTop extends React.Component {
               {/* </a> */}
                 {/* </Link> */}
 
-              <Link to='/FollowList'>
-              <li className="list-item">
+              <li className="list-item" onClick={this.onCloseFansListHandle.bind(this)}>
                   <span>{this.props.fansList.length}</span>
                   粉丝
               </li>
-              </Link>
             </ul>
 
             <div className="user-desc">
@@ -63,7 +62,18 @@ class UserTop extends React.Component {
           </div>
         </div>
         </div>
-        <FollowListComponent visible={this.state.followOpen} onClose={this.onCloseListHandle.bind(this)} />
+        <FollowListComponent
+          toOtherUser = {this.toOtherUser.bind(this)}
+          list = {this.props.followList}
+          visible={this.state.followOpen}
+          onClose={this.onCloseListHandle.bind(this)}
+        />
+        <FollowListComponent
+          toOtherUser = {this.toOtherUser.bind(this)}
+          list = {this.props.fansList}
+          visible={this.state.fansOpen}
+          onClose={this.onCloseFansListHandle.bind(this)}
+        />
       </div>
     );
   }
@@ -85,6 +95,21 @@ class UserTop extends React.Component {
     this.setState({
       followOpen : !this.state.followOpen
     });
+  }
+
+  onCloseFansListHandle() {
+    this.setState({
+      fansOpen : !this.state.fansOpen
+    })
+  }
+
+  /**
+   * 访问其他用户
+   * @param {用户id} id
+   */
+  toOtherUser(id) {
+    const toOU = this.props.toOtherUser;
+    toOU(id);
   }
 
 }

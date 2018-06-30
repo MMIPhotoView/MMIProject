@@ -30,6 +30,7 @@ class UserPage extends React.Component {
     return (
       <div>
         <UserTop
+          toOtherUser = {this.toOtherUser.bind(this)}
           isme={this.state.isme}
           userinfo = { this.state.userData }
           followList = { this.state.followList}
@@ -64,9 +65,6 @@ class UserPage extends React.Component {
     this.getFansList();
 
     this.getUserPhotoList();
-
-    
-
   }
 
   /**
@@ -172,6 +170,14 @@ class UserPage extends React.Component {
       this.props.history.push('/');
 
     }
+  }
+
+  /**
+   * 根据id访问其他User
+   * @param {用户} id
+   */
+  toOtherUser(id) {
+    this.props.history.push(`/User/${id}`);
   }
 }
 
