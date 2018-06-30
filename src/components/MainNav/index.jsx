@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom'
 import './style.less'
+import SearchComponent from '../Search'
 
 
 class Nav extends React.Component {
@@ -20,12 +21,10 @@ class Nav extends React.Component {
                   </NavLink>
                 </div>
                 <div className={'col-md-3'}></div>
-                <div className={'col-md-4 search-bar'}>
-                  <input type="text" className={'search-input'} placeholder={'搜索'}/>
-                  <div className={'input-bg'}>
-                    <i className="layui-icon layui-icon-search" ></i>
-                  </div>
-                </div>
+               <div className={'col-md-4 search-bar'}>
+                 return <SearchComponent/>
+               </div>
+
                 <div className={'col-md-3'}></div>
 
 
