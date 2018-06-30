@@ -2,6 +2,7 @@
 import { Button, Radio, Icon, Modal } from 'antd';
 import React from 'react';
 import PureRenderMixin from "react-addons-pure-render-mixin";
+import './style.less'
 
 class App extends React.Component {
   constructor(props, context) {
@@ -46,9 +47,16 @@ class App extends React.Component {
           onCancel={this.handleCancel}
           footer={[]}
         >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
+
+          <div className={'modify-icon'}>
+            <Icon type="edit" style={{fontSize:'32px',paddingRight:'12px'}}/>
+            修改照片
+          </div>
+          <div className={'modify-icon'}>
+            <Icon type="delete" style={{fontSize:'32px',paddingRight:'12px'}}/>
+            删除照片
+          </div>
+
         </Modal>
       </div>
     );
@@ -57,6 +65,11 @@ class App extends React.Component {
   componentDidMount(){
 
   }
+
+  test(){
+    alert("aaa");
+  }
+
 }
 
 
