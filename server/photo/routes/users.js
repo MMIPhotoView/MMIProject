@@ -121,9 +121,9 @@ router.post('/updateURByAid',function (req,res,next){
  * 查询关注的人的资料,返回的应该是list
  */
 router.post('/getFollowList',function (req, res, next) {
-    var aid = req.cookies.currentId;
+    var aid = req.body.user_aid;
     urs.queryFollowData(aid,function (result) {
-        //console.log(result)
+        console.log(result)
         res.json(result);
     });
 });
@@ -133,7 +133,7 @@ router.post('/getFollowList',function (req, res, next) {
  * 查询粉丝的资料，返回的应该是list
  */
 router.post('/getBeFollowList',function (req, res, next) {
-    var aid = req.cookies.currentId;
+    var aid = req.body.user_aid;
     urs.queryBeFollowData(aid,function (result) {
         //console.log(result)
         res.json(result);

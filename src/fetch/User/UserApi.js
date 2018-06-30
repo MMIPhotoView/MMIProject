@@ -27,3 +27,27 @@ export function getUserData(userId) {
   });
   return result;
 }
+
+/**
+ * 根据id获取用户的关注列表
+ * @param {用户id} userId
+ */
+export function getUserFollowList(userId){
+  const uri = `${userApi}/getFollowList`;
+  const result = post(uri, {
+    user_aid : userId
+  });
+  return result;
+}
+
+/**
+ * 根据id获取用户的粉丝列表
+ * @param {用户id} userId
+ */
+export function getUserFansList(userId){
+  const uri = `${userApi}/getBeFollowList`;
+  const result = post(uri, {
+    user_aid : userId
+  });
+  return result;
+}

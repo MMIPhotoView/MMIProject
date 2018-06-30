@@ -36,13 +36,13 @@ class UserTop extends React.Component {
             </div>
             <ul className={'count-list'}>
               <li className="list-item" onClick={this.editMyData}>
-                <span>{this.props.userinfo.photoNums}</span>
+                <span>{this.props.photoCount}</span>
                  照片
               </li>
               {/* <Link to='/FollowList'> */}
               {/* <a href= '#'> */}
                 <li className="list-item" onClick={this.onCloseListHandle.bind(this)}>
-                    <span>{this.props.userinfo.follow}</span>
+                    <span>{this.props.followList.length}</span>
                     关注
                 </li>
               {/* </a> */}
@@ -50,7 +50,7 @@ class UserTop extends React.Component {
 
               <Link to='/FollowList'>
               <li className="list-item">
-                  <span>{this.props.userinfo.fans}</span>
+                  <span>{this.props.fansList.length}</span>
                   粉丝
               </li>
               </Link>
