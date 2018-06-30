@@ -2,7 +2,6 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import RouteMap from '../router/routeMap';
 
-import { Button } from 'antd'
 
 import 'antd/dist/antd.css'
 import './style.less'
