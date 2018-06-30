@@ -22,7 +22,7 @@ class Nav extends React.Component {
                 </div>
                 <div className={'col-md-3'}></div>
                <div className={'col-md-4 search-bar'}>
-                 return <SearchComponent/>
+                 <SearchComponent/>
                </div>
 
                 <div className={'col-md-3'}></div>
