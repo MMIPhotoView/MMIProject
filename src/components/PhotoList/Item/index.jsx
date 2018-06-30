@@ -19,18 +19,21 @@ class Home extends React.Component {
     const data =this.props.data
     return (
       <div className='photo-block left'>
-        <div>
-          <Modify isShow={this.state.visible}/>
-        </div>
+
+
 
           <div className='pic' onClick={this.picClickHandle.bind(this)}>
             <img src="../../../images/banner.jpg" alt="图片" />
           </div>
 
           <div className='cont'>
-            <span className='store'>{`标签：${data.label}`}</span>
+
             {/* <div className='user-icon'><img src="../../../images/yeoman.png" alt="头像"/></div> */}
             <div className='user-name'><span>{`相片：${data.name}`}</span></div>
+            <div className={'user-operate'}>
+              <Modify/>
+            </div>
+            <span className='store'>{`标签：${data.label}`}</span>
           </div>
 
         </div>

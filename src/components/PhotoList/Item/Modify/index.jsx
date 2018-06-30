@@ -1,4 +1,5 @@
-import { Modal, Button } from 'antd';
+
+import { Button, Radio, Icon, Modal } from 'antd';
 import React from 'react';
 import PureRenderMixin from "react-addons-pure-render-mixin";
 
@@ -7,8 +8,8 @@ class App extends React.Component {
     super(props,context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
     this.state = {
-      visible: true
-
+      visible: false,
+      size: 'large',
     }
 
 
@@ -37,12 +38,13 @@ class App extends React.Component {
   render() {
     return (
       <div>
-
+        <Icon type="setting" onClick={this.showModal} style={{fontSize:'30px'}}/>
         <Modal
           title="Basic Modal"
           visible={this.state.visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
+          footer={[]}
         >
           <p>Some contents...</p>
           <p>Some contents...</p>
@@ -53,8 +55,7 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    //alert("aaa");
-    console.log(this.props.isShow);
+
   }
 }
 
