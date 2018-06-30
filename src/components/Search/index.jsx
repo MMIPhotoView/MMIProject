@@ -12,8 +12,11 @@ class SearchItem extends React.Component {
   render() {
     return (
       <div>
-        <input type="text" className={'search-input'} placeholder={'搜索'}/>
+
+
         <div className={'input-bg'}>
+          <input type="text" className={'search-input'} placeholder={'搜索'}/>
+
           <i className="layui-icon layui-icon-search" onClick={this.test.bind(this)}></i>
         </div>
       </div>

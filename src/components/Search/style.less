@@ -2,7 +2,7 @@
 .search-bar {
 
   .search-input {
-    width:80%;
+    width:100%;
     border: solid 1px #dbdbdb;
     border-radius: 3px;
     color: #262626;
@@ -13,8 +13,8 @@
     margin-left: 10%;
   }
   .input-bg {
-    width:80%;
-    margin:5% 10% 0% 10%;
+    width:100%;
+    float: left;
 
     i{
       border-radius: 3px;
@@ -22,7 +22,8 @@
       cursor: text;
       font-size: 17px;
       font-weight: 300;
-      left: 260px;
+      right: 0%;
+      float: left;
       padding: 7px;
       position: absolute;
       text-align: center;
@@ -30,4 +31,8 @@
       z-index: 2;
     }
   }
+}
+
+.layui-icon layui-icon-search{
+
 }
