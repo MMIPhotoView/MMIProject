@@ -4,7 +4,6 @@ import UserTop from '../../components/UserTop'
 
 import PhotoList from '../../components/PhotoList'
 
-import { getAllPhoto} from '../../fetch/home/home';
 import { getPhotoByUserId } from '../../fetch/Photo/PhotoApi';
 import {getUserData,getUserFollowList, getUserFansList} from '../../fetch/User/UserApi'
 
