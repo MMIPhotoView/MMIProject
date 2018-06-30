@@ -22,7 +22,7 @@ class FollowItem extends React.Component {
             <div className='ifo_2'>bbbbsadsafsafsabbbbbbbb</div>
           </div>
           <div className='boder button'>
-            <button style={{width:'80%'}} onClick={this.test} >关注</button>
+            <button style={{width:'80%',height:'80%'}} onClick={this.test} >关注</button>
           </div>
         </div>
 
