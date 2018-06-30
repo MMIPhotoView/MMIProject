@@ -8,8 +8,11 @@ class Home extends React.Component {
   constructor(props, context) {
     super(props,context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
+    this.state = {
+      visible: false
 
-    this.state = { visible: false }
+    }
+
 
   }
   render() {
@@ -17,11 +20,11 @@ class Home extends React.Component {
     return (
       <div className='photo-block left'>
         <div>
-          <Modify/>
+          <Modify isShow={this.state.visible}/>
         </div>
 
           <div className='pic' onClick={this.picClickHandle.bind(this)}>
-            <img src="../../../images/banner.jpg" alt="图片"/>
+            <img src="../../../images/banner.jpg" alt="图片" />
           </div>
 
           <div className='cont'>
@@ -36,7 +39,10 @@ class Home extends React.Component {
   }
 
   picClickHandle() {
-
+    this.setState({
+      visible:true
+    })
+    console.log(this.state.visible)
 
 
   }

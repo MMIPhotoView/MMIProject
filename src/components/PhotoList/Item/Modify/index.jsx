@@ -1,8 +1,18 @@
 import { Modal, Button } from 'antd';
 import React from 'react';
+import PureRenderMixin from "react-addons-pure-render-mixin";
 
 class App extends React.Component {
-  state = { visible: false }
+  constructor(props, context) {
+    super(props,context);
+    this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
+    this.state = {
+      visible: true
+
+    }
+
+
+  }
 
   showModal = () => {
     this.setState({
@@ -27,7 +37,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Button type="primary" onClick={this.showModal}>Open</Button>
+
         <Modal
           title="Basic Modal"
           visible={this.state.visible}
@@ -40,6 +50,11 @@ class App extends React.Component {
         </Modal>
       </div>
     );
+  }
+
+  componentDidMount(){
+    //alert("aaa");
+    console.log(this.props.isShow);
   }
 }
 
