@@ -1,7 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Link} from 'react-router-dom'
-import FollowListComponent from '../FollowList'
+import FansListComponent from '../FansList'
 
 
 import './style.less'
@@ -62,17 +62,22 @@ class UserTop extends React.Component {
           </div>
         </div>
         </div>
-        <FollowListComponent
+        <FansListComponent
           toOtherUser = {this.toOtherUser.bind(this)}
+          followList = {this.props.followList.map((item) => (item.aid))}
           list = {this.props.followList}
           visible={this.state.followOpen}
           onClose={this.onCloseListHandle.bind(this)}
+
+          title='关注列表'
         />
-        <FollowListComponent
+        <FansListComponent
           toOtherUser = {this.toOtherUser.bind(this)}
+          followList = {this.props.followList.map((item) => (item.aid))}
           list = {this.props.fansList}
           visible={this.state.fansOpen}
           onClose={this.onCloseFansListHandle.bind(this)}
+          title='粉丝列表'
         />
       </div>
     );
