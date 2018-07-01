@@ -11,7 +11,7 @@ class Home extends React.Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
     this.state = {
       visible: false,
-      tags: ['猫咪', '英短'],
+      tags: '',
     }
 
 
