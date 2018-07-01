@@ -84,14 +84,17 @@ class App extends React.Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
           footer={[
-            <div style={{float:'left'}}>
+            <div style={{float:'left',height:'40px'}}>
               <Icon type="delete" style={{fontSize:'32px',paddingRight:'12px',paddingTop:'4px'}}/>
               删除照片
             </div>,
-            <Button key="back" type="ghost" size="large" onClick={this.handleCancel}>返 回</Button>,
-            <Button key="submit" type="primary" size="large"  onClick={this.handleOk.bind(this)}>
-              提 交
-            </Button>
+            <Button key="submit" type="primary" size="large" style={{backgroundColor:'#FFFFFF',borderColor:'#FFFFFF'}}>
+
+            </Button>,
+            <div style={{float:'right'}} size="large" >
+            <Icon type="check" style={{fontSize:'32px',paddingRight:'12px',paddingTop:'4px'}} onClick={this.handleOk.bind(this)}/>
+              提交
+            </div>,
           ]}
         >
 
