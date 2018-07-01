@@ -32,6 +32,7 @@ class Home extends React.Component {
       inputVisible: false,
       inputValue: '',
       photoName: '',
+      img:'',
     }
   }
 
@@ -42,8 +43,12 @@ class Home extends React.Component {
     });
   }
 
+  //提交和数据获取的函数
   handleOk = (e) => {
     console.log(e);
+    console.log("photoName:",this.state.photoName);
+    console.log("TagList:",this.state.tags);
+    console.log("Photo:",this.state.img);
     this.setState({
       visible: false,
     });
@@ -68,11 +73,11 @@ class Home extends React.Component {
         loading: false,
       }));
     }
+    this.setState({ img: info.file.originFileObj });
   }
 
   handleClose = (removedTag) => {
     const tags = this.state.tags.filter(tag => tag !== removedTag);
-    console.log(tags);
     this.setState({ tags });
   }
 
@@ -91,7 +96,6 @@ class Home extends React.Component {
     if (inputValue && tags.indexOf(inputValue) === -1) {
       tags = [...tags, inputValue];
     }
-    console.log(tags);
     this.setState({
       tags,
       inputVisible: false,
@@ -120,6 +124,7 @@ class Home extends React.Component {
     const { tags, inputVisible, inputValue } = this.state;
     const { photoName } = this.state;
     const suffix = photoName ? <Icon type="close-circle" onClick={this.emitEmpty} /> : null;
+
     return (
       <div>
         <Affix className={'affix-position'} offsetTop={this.state.top} onClick={this.showModal}>
@@ -134,7 +139,7 @@ class Home extends React.Component {
           onCancel={this.handleCancel}
           footer={[
             <Button key="back" type="ghost" size="large" onClick={this.handleCancel}>返 回</Button>,
-            <Button key="submit" type="primary" size="large"  onClick={this.handleOk}>
+            <Button key="submit" type="primary" size="large"  onClick={this.handleOk.bind(this)}>
               提 交
             </Button>
           ]}>
@@ -197,6 +202,7 @@ class Home extends React.Component {
         </Modal>
       </div>
     );
+
   }
 }
 
