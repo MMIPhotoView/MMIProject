@@ -41,7 +41,7 @@ class App extends React.Component {
       <div>
         <Icon type="setting" onClick={this.showModal} style={{fontSize:'30px'}}/>
         <Modal
-          title="Basic Modal"
+          title="图片操作"
           visible={this.state.visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
