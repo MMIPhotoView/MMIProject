@@ -26,8 +26,8 @@ class Home extends React.Component {
 
     return (
       <TweenOne animation={[
-        {x : '-1200px',duration:0},
-        {x : '0px',duration:500 }
+        {x : '-1300px',duration:0},
+        {x : '0px',duration:400 }
       ]}>
         <div className="index">
           <Welcome />

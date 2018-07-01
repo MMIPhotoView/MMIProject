@@ -16,11 +16,11 @@ class PhotoList extends React.Component {
     // const tempStroeList = this.props.storeList;
     // console.log(list)
     return (
-      <div className='container main-block'>
+      <div style={{margin:'0% 4% 0% 4%'}} className='main-block'>
         <div className='list-block'>
           {
             
-            this.props.isMain 
+            this.props.isMain
             ? (list.map((item, index) => {
 
               const isLikeFlag = this.props.storeList.indexOf(item.pid);
