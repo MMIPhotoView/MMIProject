@@ -45,7 +45,7 @@ class App extends React.Component {
           visible={this.state.visible}
           onOk={this.handleOk}
           onCancel={this.handleCancel}
-          footer={[]}
+          footer={null}
         >
 
           <div className={'modify-icon'}>
