@@ -1,6 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Modify from './Modify';
+import {Icon,Tag,Tooltip} from 'antd';
 
 import './style.less'
 
@@ -9,8 +10,8 @@ class Home extends React.Component {
     super(props,context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
     this.state = {
-      visible: false
-
+      visible: false,
+      tags: ['猫咪', '英短'],
     }
 
 
@@ -33,7 +34,20 @@ class Home extends React.Component {
             <div className={'user-operate'}>
               <Modify/>
             </div>
-            <span className='store'>{`标签：${data.label}`}</span>
+            <div style={{float:'right',paddingTop:'12px'}}>
+              {data.label.split('#').map((tag, index) => {
+                const isLongTag = tag.length > 20;
+                const tagElem = (
+                  <Tag key={tag} closable={index < 0} afterClose={() => this.handleClose(tag)}>
+                    {isLongTag ? `${tag.slice(0, 20)}...` : tag}
+                  </Tag>
+                );
+                if(tag.length !== 0){
+                  return isLongTag ? <Tooltip title={tag} key={tag}>{tagElem}</Tooltip> : tagElem;
+                }
+              })}
+            </div>
+            <span className='store'>{`标签：`}</span>
           </div>
 
         </div>
@@ -45,7 +59,7 @@ class Home extends React.Component {
     this.setState({
       visible:true
     })
-    console.log(this.state.visible)
+
 
 
   }
