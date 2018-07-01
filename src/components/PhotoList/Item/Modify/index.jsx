@@ -1,6 +1,6 @@
-import { Button, Radio, Icon, Modal, Affix, Upload, message,Tag, Input, Tooltip} from 'antd';
+import { Button, Icon, Modal,Tag, Input, Tooltip, Popconfirm, message} from 'antd';
 import React from 'react';
-import PureRenderMixin from "react-addons-pure-render-mixin";
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 import './style.less'
 
 class App extends React.Component {
@@ -12,7 +12,7 @@ class App extends React.Component {
       size: 'large',
       tags:['猫咪', '英短'],
       inputVisible: false,
-      inputValue: '',
+      inputValue: ''
     }
 
 
@@ -20,21 +20,21 @@ class App extends React.Component {
 
   showModal = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
   }
 
   handleOk = (e) => {
     console.log(e);
     this.setState({
-      visible: false,
+      visible: false
     });
   }
 
   handleCancel = (e) => {
     console.log(e);
     this.setState({
-      visible: false,
+      visible: false
     });
   }
   handleClose = (removedTag) => {
@@ -63,7 +63,7 @@ class App extends React.Component {
       tags,
       inputVisible: false,
       inputValue: '',
-      photoName: '',
+      photoName: ''
     });
   }
 
@@ -84,17 +84,18 @@ class App extends React.Component {
           onOk={this.handleOk}
           onCancel={this.handleCancel}
           footer={[
-            <div style={{float:'left',height:'40px'}}>
-              <Icon type="delete" style={{fontSize:'32px',paddingRight:'12px',paddingTop:'4px'}}/>
-              删除照片
+            <div style={{float:'left',height:'30px'}}>
+
+              <Popconfirm title='你确定要删除这个图片吗' onConfirm={this.confirm.bind(this)} onCancel={this.cancel.bind(this)} okText="确认删除" cancelText="取消">
+                <Button type='danger' size='small'><Icon type="delete" />删除</Button>
+              </Popconfirm>
             </div>,
             <Button key="submit" type="primary" size="large" style={{backgroundColor:'#FFFFFF',borderColor:'#FFFFFF'}}>
 
             </Button>,
             <div style={{float:'right'}} size="large" >
-            <Icon type="check" style={{fontSize:'32px',paddingRight:'12px',paddingTop:'4px'}} onClick={this.handleOk.bind(this)}/>
-              提交
-            </div>,
+              <Button onClick={this.save.bind(this)} size='small' type='primary'><Icon type="save" />保存</Button>
+            </div>
           ]}
         >
 
@@ -103,7 +104,7 @@ class App extends React.Component {
             修改照片
           </div>
           <div style={{paddingBottom:'15px'}}>
-            名称：原照片名字，蒋建聪你来改吧
+            名称：{data.name}
             <Input style={{paddingTop:'8px'}}
               placeholder="请给你的照片重起一个霸气的名字"
               prefix={<Icon type="copy" style={{ color: 'rgba(0,0,0,.25)',marginTop:'10px' }} />}
@@ -118,11 +119,11 @@ class App extends React.Component {
             {tags.map((tag, index) => {
               const isLongTag = tag.length > 20;
               const tagElem = (
-                <Tag key={tag} closable={index >= 0} afterClose={() => this.handleClose(tag)}>
+                <Tag key={index} closable={index >= 0} afterClose={() => this.handleClose(tag)}>
                   {isLongTag ? `${tag.slice(0, 20)}...` : tag}
                 </Tag>
               );
-              return isLongTag ? <Tooltip title={tag} key={tag}>{tagElem}</Tooltip> : tagElem;
+              return isLongTag ? <Tooltip title={tag} key={index}>{tagElem}</Tooltip> : tagElem;
             })}
             {inputVisible && (
               <Input
@@ -151,14 +152,36 @@ class App extends React.Component {
     );
   }
 
-  componentDidMount(){
-
+  save(){
+    console.log(this.props.data)
   }
 
-  test(){
-    alert("aaa");
+  confirm() {
+    // loading
+    const deletePhoto = this.props.delete;
+    message.success('删除成功');
+    const result = deletePhoto(this.props.data.pid);
+    this.setState({
+      visible: result?false:true
+    });
+    
+    // endLoading
+  }
+  cancel() {
+    message.success('留作纪念嘛~');
   }
 
+  /**
+   * 删除
+   */
+  delete(){
+    // const deletePhoto = this.props.delete;
+    // const result = deletePhoto(this.props.data.pid);
+    // this.setState({
+    //   visible: result?false:true
+    // })
+
+  }
 }
 
 

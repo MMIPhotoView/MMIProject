@@ -1,7 +1,7 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Modify from './Modify';
-import {Icon,Tag,Tooltip} from 'antd';
+import {Tag,Tooltip} from 'antd';
 
 import './style.less'
 
@@ -11,7 +11,7 @@ class Home extends React.Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
     this.state = {
       visible: false,
-      tags: '',
+      tags: ''
     }
 
 
@@ -20,11 +20,8 @@ class Home extends React.Component {
     const data =this.props.data
     return (
       <div className='photo-block left'>
-
-
-
-          <div className='pic' onClick={this.picClickHandle.bind(this)}>
-            <img src="../../../images/banner.jpg" alt="图片" />
+          <div className='pic'>
+            <img src={data.photoUrl} alt="图片" />
           </div>
 
           <div className='cont'>
@@ -32,22 +29,26 @@ class Home extends React.Component {
             {/* <div className='user-icon'><img src="../../../images/yeoman.png" alt="头像"/></div> */}
             <div className='user-name'><span>{`相片：${data.name}`}</span></div>
             <div className={'user-operate'}>
-              <Modify/>
+              {
+                this.props.isme ? <Modify delete={this.props.delete} data = {data}/> : ''
+              }
+              
+              
             </div>
             <div style={{float:'right',paddingTop:'12px'}}>
               {data.label.split('#').map((tag, index) => {
                 const isLongTag = tag.length > 20;
                 const tagElem = (
-                  <Tag key={tag} closable={index < 0} afterClose={() => this.handleClose(tag)}>
+                  <Tag key={index} closable={index < 0} afterClose={() => this.handleClose(tag)}>
                     {isLongTag ? `${tag.slice(0, 20)}...` : tag}
                   </Tag>
                 );
                 if(tag.length !== 0){
-                  return isLongTag ? <Tooltip title={tag} key={tag}>{tagElem}</Tooltip> : tagElem;
+                  return isLongTag ? <Tooltip title={tag} key={index}>{tagElem}</Tooltip> : tagElem;
                 }
               })}
             </div>
-            <span className='store'>{`标签：`}</span>
+            <span className='store'>{'标签：'}</span>
           </div>
 
         </div>
@@ -55,13 +56,12 @@ class Home extends React.Component {
     );
   }
 
+  
+
   picClickHandle() {
     this.setState({
-      visible:true
-    })
-
-
-
+      visible:!this.state.visible
+    });
   }
 
 

@@ -5,7 +5,8 @@ import UserTop from '../../components/UserTop'
 import PhotoList from '../../components/PhotoList'
 
 import { getPhotoByUserId } from '../../fetch/Photo/PhotoApi';
-import {getUserData,getUserFollowList, getUserFansList, follow} from '../../fetch/User/UserApi'
+import {Link} from 'react-router-dom'
+import {getUserData,getUserFollowList, getUserFansList, follow, unFollow} from '../../fetch/User/UserApi'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -56,8 +57,15 @@ class UserPage extends React.Component {
             isme={this.state.isme}
             isMain={false}
             list = { this.state.photoData }
+            delete = {this.deletePhoto.bind(this)}
             />
-          : <div>加载中...</div>
+          : (<div style={{textAlign:'center'}}>
+              <h3>还没有照片，快上传吧～！</h3>
+              <p>
+                前往<Link to='/'>首页</Link>查看更多人气图片~
+              </p>
+
+            </div>)
         }
 
       </div>
@@ -78,6 +86,25 @@ class UserPage extends React.Component {
     this.getUserPhotoList();
   }
 
+
+  /**
+   * 删除照片
+   */
+  deletePhoto(pid) {
+    console.log(`pid:${pid}`)
+    // 写调用服务器
+
+
+    
+    this.setState({
+      photoData : this.state.photoData.filter((item)=>item.pid != pid)
+    });
+
+    return true;
+  }
+
+
+
   followHandle(id) {
     console.log(`处理关注的,${id}`)
     if (this.state.isme) {
@@ -89,6 +116,12 @@ class UserPage extends React.Component {
       }).then((json) => {
         const temp = json;
         this.state.followList.push(temp);
+        notification['success']({
+          message: '关注成功',
+          description: `关注用户${json.name}成功`,
+          duration: 1.5,
+          top:300
+        });
       });
 
 
@@ -103,22 +136,27 @@ class UserPage extends React.Component {
   }
 
   cancelFollowHandle(id) {
-    console.log(`处理关注的,${id}`)
+    console.log(`处理取消关注的,${id}`)
     if (this.state.isme) {
       // 登陆成功
       const fromid = this.props.userinfo.username;
-      const result = follow(fromid, id);
+      const result = unFollow(fromid, id);
       result.then((res) => {
         return res.json();
-      }).then((json) => {
-        const temp = json;
+      }).then(() => {
         const tempList = this.state.followList.filter((item)=>{
           return item.aid !== id;
         });
-        console.log('aaa',tempList);
+        this.setState({
+          followList : tempList
+        })
+        notification['success']({
+          message: '取消成功',
+          description: '取消关注成功',
+          duration: 1.5,
+          top:300
+        });
       });
-
-
     } else {
       notification['error']({
         message: '尚未登陆',
@@ -128,6 +166,8 @@ class UserPage extends React.Component {
       });
     }
   }
+
+
 
   /**
    * 获取用户的照片列表

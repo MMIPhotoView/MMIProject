@@ -65,3 +65,16 @@ export function follow(fromid, toid) {
   });
   return result;
 }
+/**
+ * 关注某人
+ * @param {关注发起者} fromid
+ * @param {被关注者} toid
+ */
+export function unFollow(fromid, toid) {
+  const uri = `${userApi}/doFollow`;
+  const result = post(uri, {
+    fromAid : fromid,
+    toAid : toid
+  });
+  return result;
+}

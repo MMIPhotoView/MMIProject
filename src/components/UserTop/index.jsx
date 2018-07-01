@@ -3,6 +3,8 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import {Link} from 'react-router-dom'
 import FansListComponent from '../FansList'
 
+import {Button} from 'antd';
+
 
 import './style.less'
 
@@ -29,11 +31,18 @@ class UserTop extends React.Component {
 
             <div className={'username'}>
                 {this.props.userinfo.name}
-                <Link to="/EditUserInfo">
+                
                   <span>
-                  <button className={'edit-btn'} >编辑个人资料</button>
+                  {
+                    this.props.isme
+                    ? <Link to="/EditUserInfo"><button className={'edit-btn'} >编辑个人资料</button></Link>
+                    : ( this.props.followList.map((item) => (item.aid)).indexOf(this.props.userinfo.aid) == -1
+                        ? <Button style={{margin:'0 0 5px 10px'}} size='small' >关注</Button>
+                        : <Button type='primary' style={{margin:'0 0 5px 10px'}} size='small' >已关注</Button>
+                      )
+                  }
                   </span>
-                </Link>
+                
             </div>
             <ul className={'count-list'}>
               <li className="list-item" onClick={this.editMyData}>
