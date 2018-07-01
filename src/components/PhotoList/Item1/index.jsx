@@ -17,7 +17,7 @@ class Item extends React.Component {
     const data =this.props.data;
     return (
         <div className='tile'>
-          <img src='../../../images/banner.jpg' />
+          <img src={data.photoUrl} />
           <div className='text'>
 
             <h3 className='animate-text'>{data.desc}</h3>

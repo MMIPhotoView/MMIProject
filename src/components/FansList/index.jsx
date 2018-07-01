@@ -1,7 +1,8 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { Modal,List,Avatar,Button  } from 'antd';
-import {Link} from 'react-router-dom';
+import { Modal,List,Button  } from 'antd';
+// import {Link} from 'react-router-dom';
+import Item from './Item'
 
 import './style.less'
 
@@ -14,32 +15,31 @@ class FansList extends React.Component {
     }
   }
 
+
+  followClickHandle(e) {
+      console.log(e)
+
+  }
+
   /**
    * 判断是否关注
    * @param {检查的id} id
    */
-  isFollow(id) {
-    const followList = this.props.followList;
-    const result = followList.indexOf(id);
-    console.log(followList)
+//   isFollow(id) {
+//     const followList = this.props.followList;
+//     const result = followList.indexOf(id);
+//     console.log(followList)
 
-    if (result == -1) {
-        return <Button type='primary' size='small'>关注</Button>
-    } else {
-        return <Button  size='small'>已关注</Button>
-    }
+//     if (result == -1) {
+//         return <Button onClick={this.followClickHandle.bind(this)} type='primary' size='small'>关注</Button>
+//     } else {
+//         return <Button onClick={this.followClickHandle.bind(this)} size='small'>已关注</Button>
+//     }
 
-  }
+//   }
 
 
   render() {
-
-    const follow  = (
-        <Button  size='small'>已关注</Button>
-    )
-    const unFollow  = (
-        <Button type='primary' size='small'>关注</Button>
-    )
     
     
     return (
@@ -60,33 +60,43 @@ class FansList extends React.Component {
                 itemLayout='horizaontal'
                 dataSource = {this.props.list}
                 renderItem={item => (
-                    <List.Item actions={ [this.isFollow(item.aid)]}>
-                        <List.Item.Meta
+                    // <List.Item actions={ [this.isFollow(item.aid)]}>
+                    //     <List.Item.Meta
 
-                            avatar = {<Link to = {`/User/${item.aid}`} ><Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /></Link>}
-                            title = {item.name}
-                            description = {item.desc}
+                    //         avatar = {<Link to = {`/User/${item.aid}`} ><Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" /></Link>}
+                    //         title = {item.name}
+                    //         description = {item.desc}
                         
-                        />
-                    </List.Item>
+                    //     />
+                    // </List.Item>
+                    <Item
+                        followHandle={this.followHandle.bind(this)}
+                        cancelFollowHandle={this.cancelFollowHandle.bind(this)}
 
-
+                        item={item}
+                        isFollow={this.props.followList.indexOf(item.aid)===-1?false:true}
+                    
+                    />
                 )}
 
             />
-
-
-
-
-
-
-
         </Modal>
 
 
       </div>
     );
   }
+
+    followHandle(id) {
+        const follow =  this.props.followHandle;
+        follow(id);
+
+    }
+
+    cancelFollowHandle(id) {
+        const cancel = this.props.cancelFollowHandle;
+        cancel(id);
+    }
 
 
 }

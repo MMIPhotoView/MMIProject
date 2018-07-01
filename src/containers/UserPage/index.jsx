@@ -5,12 +5,13 @@ import UserTop from '../../components/UserTop'
 import PhotoList from '../../components/PhotoList'
 
 import { getPhotoByUserId } from '../../fetch/Photo/PhotoApi';
-import {getUserData,getUserFollowList, getUserFansList} from '../../fetch/User/UserApi'
+import {getUserData,getUserFollowList, getUserFansList, follow} from '../../fetch/User/UserApi'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as userInfoActionsFromOtherFile from '../../actions/userinfo.js'
 import TweenOne from 'rc-tween-one'
+import {notification} from 'antd';
 
 import './style.less'
 
@@ -35,13 +36,16 @@ class UserPage extends React.Component {
       ]}>
       <div>
         <UserTop
-        style={{marginTop:'50px'}}
+          style={{marginTop:'50px'}}
           toOtherUser = {this.toOtherUser.bind(this)}
           isme={this.state.isme}
           userinfo = { this.state.userData }
           followList = { this.state.followList}
           fansList = { this.state.fansList }
           photoCount = { this.state.photoData.length }
+
+          followHandle = {this.followHandle.bind(this)}
+          cancelFollowHandle = {this.cancelFollowHandle.bind(this)}
 
           />
         
@@ -72,6 +76,57 @@ class UserPage extends React.Component {
     this.getFansList();
 
     this.getUserPhotoList();
+  }
+
+  followHandle(id) {
+    console.log(`处理关注的,${id}`)
+    if (this.state.isme) {
+      // 登陆成功
+      const fromid = this.props.userinfo.username;
+      const result = follow(fromid, id);
+      result.then((res) => {
+        return res.json();
+      }).then((json) => {
+        const temp = json;
+        this.state.followList.push(temp);
+      });
+
+
+    } else {
+      notification['error']({
+        message: '尚未登陆',
+        description: '请登陆后再尝试',
+        duration: 1.5,
+        top:300
+      });
+    }
+  }
+
+  cancelFollowHandle(id) {
+    console.log(`处理关注的,${id}`)
+    if (this.state.isme) {
+      // 登陆成功
+      const fromid = this.props.userinfo.username;
+      const result = follow(fromid, id);
+      result.then((res) => {
+        return res.json();
+      }).then((json) => {
+        const temp = json;
+        const tempList = this.state.followList.filter((item)=>{
+          return item.aid !== id;
+        });
+        console.log('aaa',tempList);
+      });
+
+
+    } else {
+      notification['error']({
+        message: '尚未登陆',
+        description: '请登陆后再尝试',
+        duration: 1.5,
+        top:300
+      });
+    }
   }
 
   /**

@@ -68,6 +68,9 @@ class UserTop extends React.Component {
           list = {this.props.followList}
           visible={this.state.followOpen}
           onClose={this.onCloseListHandle.bind(this)}
+        
+          followHandle = {this.props.followHandle}
+          cancelFollowHandle = {this.props.cancelFollowHandle}
 
           title='关注列表'
         />
@@ -78,6 +81,9 @@ class UserTop extends React.Component {
           visible={this.state.fansOpen}
           onClose={this.onCloseFansListHandle.bind(this)}
           title='粉丝列表'
+
+          followHandle = {this.props.followHandle}
+          cancelFollowHandle = {this.props.cancelFollowHandle}
         />
       </div>
     );

@@ -73,8 +73,12 @@ router.post('/doFollow',function (req, res, next) {
     var nickname = req.body.nickname;
     userRelation.setUserRelation(fromAid,toAid,groupName,nickname)
     console.log(userRelation)
-    urs.doFollowOne(userRelation,function (result) {
-        res.json(result);
+    urs.doFollowOne(userRelation,function (data) {
+        uis.queryUserinfoByAid(toAid,function (result) {
+            //console.log(result)
+            res.json(result[0]);
+            // res.send(result)
+        });
     });
 });
 
