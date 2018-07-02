@@ -1,6 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { Modal,List,Button  } from 'antd';
+import { Modal,List  } from 'antd';
 // import {Link} from 'react-router-dom';
 import Item from './Item'
 

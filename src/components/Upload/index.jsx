@@ -1,6 +1,6 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
-import { Button, Radio, Icon, Modal, Affix, Upload, message,Tag, Input, Tooltip} from 'antd';
+import { Button, Icon, Modal, Affix, Upload, message,Tag, Input, Tooltip} from 'antd';
 import './style.less'
 
 function getBase64(img, callback) {
@@ -32,32 +32,32 @@ class Home extends React.Component {
       inputVisible: false,
       inputValue: '',
       photoName: '',
-      img:'',
+      img:''
     }
   }
 
 
   showModal = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
   }
 
   //提交和数据获取的函数
   handleOk = (e) => {
     console.log(e);
-    console.log("photoName:",this.state.photoName);
-    console.log("TagList:",this.state.tags);
-    console.log("Photo:",this.state.img);
+    console.log('photoName:',this.state.photoName);
+    console.log('TagList:',this.state.tags);
+    console.log('Photo:',this.state.img);
     this.setState({
-      visible: false,
+      visible: false
     });
   }
 
   handleCancel = (e) => {
     console.log(e);
     this.setState({
-      visible: false,
+      visible: false
     });
   }
 
@@ -70,7 +70,7 @@ class Home extends React.Component {
       // Get this url from response in real world.
       getBase64(info.file.originFileObj, imageUrl => this.setState({
         imageUrl,
-        loading: false,
+        loading: false
       }));
     }
     this.setState({ img: info.file.originFileObj });
@@ -99,7 +99,7 @@ class Home extends React.Component {
     this.setState({
       tags,
       inputVisible: false,
-      inputValue: '',
+      inputValue: ''
     });
   }
 
