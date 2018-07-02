@@ -38,12 +38,7 @@ class Item extends React.Component {
   like() {
     const islike = this.state.isLike;
     const id = this.props.data.pid
-    // if (islike) {
-    //   // 取消点赞
-    //   layer.msg('取消点赞成功');
-    // } else {
-    //   layer.msg('点赞成功');
-    // }
+    
     const result = this.storeClickHandle(id,islike);
 
     if (result) {

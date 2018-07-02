@@ -3,6 +3,7 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import Welcome from '../../components/Jumbotron'
 import PhotoList from '../../components/PhotoList'
 
+import { message} from 'antd';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as storeActionFromFile from '../../actions/store.js'
@@ -81,20 +82,20 @@ class Home extends React.Component {
   storeHandle(id,isStore) {
     const loginFlag = this.isLogin();
     if (!loginFlag) {
-      layer.msg('您还没登陆呢,请登陆再来吧~');
+      message.info('您还没登陆呢,请登陆再来吧~')
       return false;
     } else {
       const storeActions = this.props.storeActions;
       if (!isStore) {
         // 收藏
 
-        layer.msg('收藏成功!');
+        message.success('点赞成功');
         storeActions.add(id);
         return true;
         
       } else {
         // 取消收藏
-        layer.msg('取消收藏成功!');
+        message.info('取消点赞')
         storeActions.rm(id);
         return true;
 
