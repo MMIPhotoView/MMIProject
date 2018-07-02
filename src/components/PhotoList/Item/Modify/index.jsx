@@ -1,4 +1,4 @@
-import { Button, Icon, Modal,Tag, Input, Tooltip, Popconfirm, message} from 'antd';
+import {Button, Icon, Modal,Tag, Input, Tooltip, Popconfirm, message} from 'antd';
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import './style.less'
@@ -15,7 +15,8 @@ class App extends React.Component {
       inputVisible: false,
       inputValue: '',
       photoName: '',
-      img:''
+      img:'',
+      loadinng : true
     }
 
 
@@ -90,6 +91,7 @@ class App extends React.Component {
 
     return (
       <div>
+        
         <Icon type="setting" onClick={this.showModal} style={{fontSize:'30px'}}/>
         <Modal
           title="照片操作"
@@ -161,14 +163,31 @@ class App extends React.Component {
               </Tag>
             )}
           </div>
-
         </Modal>
+        {/* <Spin size='large' className='loading' spinning={!this.state.loading}/> */}
+        
       </div>
     );
   }
 
   save(){
-    console.log(this.props.data)
+    const saveFn = this.props.updatePhoto;
+    const data = this.props.data;
+    const pid = data.pid;
+    const name = this.state.photoName;
+    let label = '';
+    this.state.tags.forEach((item) => {
+      label = `${label}#${item}`;
+    });
+
+    saveFn(pid, name, 'desc',label);
+    this.setState({
+      visible: false
+    
+    });
+    message.success('修改成功');
+    
+    
   }
 
   confirm() {

@@ -116,15 +116,12 @@ class UserPage extends React.Component {
    * @param {*} plabel
    */
   updatePhotoData(pid, pname, pdesc, plabel) {
+    console.log(pid, pname, pdesc, plabel)
     const result = updatePhotoData(pid, pname, pdesc, plabel);
     result.then((res) => {
       return res.json();
-    }).then((json) => {
-      if (json === '更新照片成功') {
-        return true;
-      } else {
-        return false;
-      }
+    }).then(() => {
+      this.getUserPhotoList()
     });
   }
 
