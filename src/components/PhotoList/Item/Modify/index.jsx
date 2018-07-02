@@ -8,11 +8,14 @@ class App extends React.Component {
     super(props,context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate()
     this.state = {
+      top: 150,
       visible: false,
-      size: 'large',
-      tags:['猫咪', '英短'],
+      loading: false,
+      tags: ['猫咪', '英短'],
       inputVisible: false,
-      inputValue: ''
+      inputValue: '',
+      photoName: '',
+      img:''
     }
 
 
@@ -66,9 +69,19 @@ class App extends React.Component {
       photoName: ''
     });
   }
-
+  handleClose = (removedTag) => {
+    const tags = this.state.tags.filter(tag => tag !== removedTag);
+    this.setState({ tags });
+  }
+  onChangePhotoName = (e) => {
+    this.setState({ photoName: e.target.value });
+  }
   saveInputRef = input => this.input = input
 
+  emitEmpty = () => {
+    this.photoNameInput.focus();
+    this.setState({ photoName: '' });
+  }
   render() {
     const data = this.props.data;
     const { tags,inputVisible, inputValue } = this.state;
@@ -103,17 +116,19 @@ class App extends React.Component {
             <Icon type="edit" style={{fontSize:'32px',paddingRight:'12px',paddingBottom:'15px'}}/>
             修改照片
           </div>
-          <div style={{paddingBottom:'15px'}}>
+          <div style={{paddingBottom:'15px',paddingTop:'10px'}}>
             名称：{data.name}
-            <Input style={{paddingTop:'8px'}}
+            <Input style={{paddingTop:'0px'}}
               placeholder="请给你的照片重起一个霸气的名字"
-              prefix={<Icon type="copy" style={{ color: 'rgba(0,0,0,.25)',marginTop:'10px' }} />}
+              prefix={<Icon type="copy" style={{ color: 'rgba(0,0,0,.25)',fontSize:'16px',marginTop:'5px' }} />}
               suffix={suffix}
               value={photoName}
               onChange={this.onChangePhotoName}
+
               ref={node => this.photoNameInput = node}
             />
           </div>
+
           <div style={{clear:'left',paddingTop:'10px'}}>
             标签：
             {tags.map((tag, index) => {
@@ -164,7 +179,7 @@ class App extends React.Component {
     this.setState({
       visible: result?false:true
     });
-    
+
     // endLoading
   }
   cancel() {

@@ -10,7 +10,7 @@ function getBase64(img, callback) {
 }
 
 function beforeUpload(file) {
-  const isJPG = file.type === 'image/jpeg';
+  const isJPG = file.type === 'image/jpeg/png';
   if (!isJPG) {
     message.error('You can only upload JPG file!');
   }
