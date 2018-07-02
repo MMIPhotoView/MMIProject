@@ -26,7 +26,8 @@ class UserPage extends React.Component {
       photoData : [],
       isme:false,
       followList:[],
-      fansList:[]
+      fansList:[],
+      loginFollowList:[]
     }
   }
   render() {
@@ -42,6 +43,7 @@ class UserPage extends React.Component {
           isme={this.state.isme}
           userinfo = { this.state.userData }
           followList = { this.state.followList}
+          loginFollowList = {this.state.loginFollowList}
           fansList = { this.state.fansList }
           photoCount = { this.state.photoData.length }
 
@@ -224,6 +226,8 @@ class UserPage extends React.Component {
     }
   }
 
+
+
   /**
    * 获取关注列表
    */
@@ -241,6 +245,19 @@ class UserPage extends React.Component {
       })
     } else {
       this.props.history.push('/404')
+    }
+
+    const loginId = this.props.userinfo.username;
+    if (loginId != null) {
+      const loginFollowList = getUserFollowList(loginId);
+      loginFollowList.then((res)=>{
+        return res.json();
+      }).then((json)=>{
+        const result = json;
+        this.setState({
+          loginFollowList:result
+        })
+      })
     }
   }
 
