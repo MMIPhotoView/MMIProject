@@ -15,10 +15,14 @@ class RouterMap extends React.Component {
         return (
             <BrowserRouter >
                 <div>
-                    <Nav userData = {this.props.userData} />
+                    <Nav
+                        userData = {this.props.userData}
+                        logoutHandle = {this.props.logoutHandle}
+                        toMain = {this.props.toMain}
+                    />
                     <Switch >
-                        <Route  exact path='/' component={Home}/>
-                        <Route path='/Login' component={Login}/>
+                        <Route  exact path='/' component={Home} />
+                        <Route path='/Login' component={Login} />
                         <Route path='/User/:id' component={UserPage}/>
                         <Route path='/FollowList' component={FollowList}/>
                         <Route path='/EditUserInfo' component={EditUserInfoPage}/>

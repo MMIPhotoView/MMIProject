@@ -6,6 +6,9 @@ export default function userinfo (state = initialState, action) {
     switch (action.type) {
         case actionTypes.USERINFO_UPDATE:
             return action.data
+        case actionTypes.USERINFO_RM:
+            state = {}
+            return state
         default:
             return state
     }

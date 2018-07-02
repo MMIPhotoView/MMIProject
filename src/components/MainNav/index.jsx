@@ -7,39 +7,65 @@ import { Menu, Affix, Avatar, Icon } from 'antd';
 import Upload from '../../components/Upload'
 
 const SubMenu = Menu.SubMenu;
-const MenuItemGroup = Menu.ItemGroup;
+// const MenuItemGroup = Menu.ItemGroup;
 class Nav extends React.Component {
 
     constructor(props, context) {
         super(props,context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
         this.state = {
-          current: 'mail',
+          current: 'index'
         }
 
 
     }
-    render() {
+    handleClick= (e) => {
+        this.setState({
+            current: e.key
+        });
+        if (e.key === 'logout') {
+            this.logoutHandle()
+        }
 
+        if (e.key === 'userMain') {
+            this.toMain();
+            // this.props.history.push(`/User/${this.props.username}`)
+        }
+
+    }
+    render() {
+        const data = this.props.userData;
         return (
             <div>
             <Affix offsetTop={0}>
-                <Menu mode="horizontal">
-                    <Menu.Item key="main">
+                <Menu
+                    mode="horizontal"
+                    onClick={this.handleClick.bind(this)}
+                    selectedKeys={[this.state.current]}
+                >
+                    <Menu.Item key="index">
                         <NavLink to={'/'}>首页</NavLink>
                     </Menu.Item>
                   <div >
                     <SearchComponent/>
                   </div>
-                    <SubMenu style={{float:'right'}} title={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}>
-                        <Menu.Item key="setting:1"><Icon type="user" />用户主页</Menu.Item>
-                        <Menu.Item key="setting:2"><Icon type="logout" />注销</Menu.Item>
 
-                    </SubMenu>
+                    {
+                        (data.username!=null && data.username!=='')
+                        ? (<SubMenu style={{float:'right'}} title={<span><Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'/>用户 - {data.userinfo.name} </span>}>
+                        {/* ? (<SubMenu style={{float:'right'}} title={<span><Icon type="setting" />Navigation Three - Submenu</span>}> */}
+                            <Menu.Item key="userMain"><Icon type="user" />
+                                主页<NavLink to={`/User/${data.username}`}>  </NavLink>
+                            </Menu.Item>
+                            <Menu.Item key="logout"><Icon type="logout" />注销 </Menu.Item>
+                          </SubMenu>)
+                        : (<Menu.Item key="user" style={{float:'right'}}>
+                            <NavLink to={'/Login'}>登录</NavLink>
+                          </Menu.Item>)
+                    }
 
-                    <Menu.Item key="user" style={{float:'right'}}>
-                        <NavLink to={'/Login'}>登录</NavLink>
-                    </Menu.Item>
+
+                    
 
                     <Menu.Item key="upload" style={{float:'right'}} >
                         {/*<div onClick={this.clickHandle.bind(this)}>*/}
@@ -73,6 +99,21 @@ class Nav extends React.Component {
         //     uploadVisable:!this.state.uploadVisable
         // });
         console.log(this.state.a)
+    }
+
+
+
+    /**
+     * 注销
+     */
+    logoutHandle() {
+        const logout = this.props.logoutHandle;
+        logout();
+    }
+
+    toMain() {
+        const toMain = this.props.toMain;
+        toMain();
     }
 }
 

@@ -6,3 +6,11 @@ export function update(data) {
         data
     }
 }
+
+export function rm(item) {
+    return {
+        type: actionTypes.USERINFO_RM,
+        data: item
+    }
+}
+

@@ -30,8 +30,9 @@ class App extends React.Component {
      <div className='main-container'>
         <div className='header'>
           <RouteMap
-            userData={'1'}
-            afterLogin = {this.afterLogin.bind(this)}
+            userData={this.props.userinfo}
+            logoutHandle = {this.logoutHandle.bind(this)}
+            toMain = {this.toMain.bind(this)}
           />
 
           
@@ -49,12 +50,15 @@ class App extends React.Component {
 
   }
 
-  componentWillMount() {
+  toMain () {
 
   }
 
-  afterLogin() {
+  logoutHandle() {
+    const actions = this.props.userInfoActions;
+    let userinfo = this.props.userinfo;
 
+    actions.rm(userinfo);
   }
 
 }
@@ -63,7 +67,7 @@ class App extends React.Component {
 // -----------------------------redux-react绑定-----------------------------------
 function mapStateToProps(state) {
   return {
-      userinfo: state.userinfo.userinfo
+      userinfo: state.userinfo
   }
 }
 function mapDispatchToProps(dispatch) {
