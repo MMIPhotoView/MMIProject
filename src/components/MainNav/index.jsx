@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom'
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import './style.less'
-// import SearchComponent from '../Search'
+import SearchComponent from '../Search'
 import { Menu, Affix, Avatar, Icon } from 'antd';
 import Upload from '../../components/Upload'
 
@@ -28,8 +28,9 @@ class Nav extends React.Component {
                     <Menu.Item key="main">
                         <NavLink to={'/'}>首页</NavLink>
                     </Menu.Item>
-
-
+                  <div >
+                    <SearchComponent/>
+                  </div>
                     <SubMenu style={{float:'right'}} title={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}>
                         <Menu.Item key="setting:1"><Icon type="user" />用户主页</Menu.Item>
                         <Menu.Item key="setting:2"><Icon type="logout" />注销</Menu.Item>
