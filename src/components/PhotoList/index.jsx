@@ -33,7 +33,12 @@ class PhotoList extends React.Component {
               }
             }))
             : (list.map((item, index) => {
-              return <UserPhotoItem delete = {this.props.delete} isme = {this.props.isme} key={index} data = {item}/>
+              return <UserPhotoItem
+                updatePhoto = {this.props.updatePhoto}
+                delete = {this.props.delete}
+                isme = {this.props.isme}
+                key={index}
+                data = {item}/>
             }))
 
 

@@ -30,7 +30,14 @@ class Home extends React.Component {
             <div className='user-name'><span>{`相片：${data.name}`}</span></div>
             <div className={'user-operate'}>
               {
-                this.props.isme ? <Modify delete={this.props.delete} data = {data}/> : ''
+                this.props.isme
+                ? <Modify
+                  delete={this.props.delete}
+                  data = {data}
+                  updatePhoto = {this.props.updatePhoto}
+                  />
+                  
+                : ''
               }
               
               

@@ -78,3 +78,19 @@ export function unFollow(fromid, toid) {
   });
   return result;
 }
+
+/**
+ * 用户修改个人资料的接口
+ * @param {用户aid} aid
+ * @param {用户名字} username
+ * @param {用户描述} userdesc
+ */
+export function updateUserInfo(aid, username, userdesc) {
+  const uri = `${userApi}/updateUserInfo`;
+  const result = post(uri, {
+    aid:aid,
+    name:username,
+    desc: userdesc
+  });
+  return result;
+}

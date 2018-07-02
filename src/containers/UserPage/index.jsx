@@ -4,9 +4,9 @@ import UserTop from '../../components/UserTop'
 
 import PhotoList from '../../components/PhotoList'
 
-import { getPhotoByUserId } from '../../fetch/Photo/PhotoApi';
+import { getPhotoByUserId, updatePhotoData} from '../../fetch/Photo/PhotoApi';
 import {Link} from 'react-router-dom'
-import {getUserData,getUserFollowList, getUserFansList, follow, unFollow} from '../../fetch/User/UserApi'
+import {getUserData,getUserFollowList, getUserFansList, follow, unFollow, updateUserInfo} from '../../fetch/User/UserApi'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -58,6 +58,7 @@ class UserPage extends React.Component {
             isMain={false}
             list = { this.state.photoData }
             delete = {this.deletePhoto.bind(this)}
+            updatePhoto = {this.updatePhotoData.bind(this)}
             />
           : (<div style={{textAlign:'center'}}>
               <h3>还没有照片，快上传吧～！</h3>
@@ -87,15 +88,53 @@ class UserPage extends React.Component {
   }
 
 
+
+  /**
+   * 更新个人资料
+   * @param {*} aid
+   * @param {*} username
+   * @param {*} userdesc
+   */
+  updateUserinfo(aid, username, userdesc) {
+    const result = updateUserInfo(aid, username, userdesc);
+    result.then((res)=>{
+      return  res.json();
+    }).then((json) => {
+      if (json === '修改成功') {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
+
+  /**
+   * 更新照片信息
+   * @param {*} pid
+   * @param {*} pname
+   * @param {*} pdesc
+   * @param {*} plabel
+   */
+  updatePhotoData(pid, pname, pdesc, plabel) {
+    const result = updatePhotoData(pid, pname, pdesc, plabel);
+    result.then((res) => {
+      return res.json();
+    }).then((json) => {
+      if (json === '更新照片成功') {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  }
+
   /**
    * 删除照片
    */
   deletePhoto(pid) {
     console.log(`pid:${pid}`)
+
     // 写调用服务器
-
-
-    
     this.setState({
       photoData : this.state.photoData.filter((item)=>item.pid != pid)
     });
@@ -106,7 +145,7 @@ class UserPage extends React.Component {
 
 
   followHandle(id) {
-    console.log(`处理关注的,${id}`)
+    // console.log(`处理关注的,${id}`)
     if (this.state.isme) {
       // 登陆成功
       const fromid = this.props.userinfo.username;
