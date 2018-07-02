@@ -1,11 +1,12 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import LoginComponent from '../../components/Login'
+import {message} from 'antd'
 // import UserMain from '../UserPage'
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { userLoginIn } from '../../fetch/User/UserApi'
+import { userLoginIn,getUserData } from '../../fetch/User/UserApi'
 
 import * as userInfoActionsFromOtherFile from '../../actions/userinfo.js'
 import * as storeActionFromFile from '../../actions/store.js'
@@ -80,9 +81,20 @@ class Login extends React.Component {
     }).then(json => {
       if(json.isLogin) {
         // 登陆成功
-        userinfo.username = json.account.id;
-        actions.update(userinfo);
-        
+
+        const userData = getUserData(json.account.id);
+        userData.then((res1) => {
+          return res1.json();
+        }).then((item)=> {
+          userinfo.userinfo = item;
+          userinfo.username = json.account.id;
+          actions.update(userinfo);
+
+        })
+
+        // userinfo.username = json.account.id;
+        // actions.update(userinfo);
+        console.log(json);
         // 初始化收藏列表
         this.initStoreList();
 
@@ -93,17 +105,11 @@ class Login extends React.Component {
         });
 
         this.props.history.push(`/User/${json.account.id}`)
-        
-
-
-
       } else {
-        layer.msg('帐号密码错误', {icon: 5});
+        message.error('账号密码错误!请重新输入')
       }
     });
-    
-    // userinfo.username = username;
-    // actions.update(userinfo);
+
   }
 
   /**

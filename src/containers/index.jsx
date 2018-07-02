@@ -1,9 +1,12 @@
 import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import RouteMap from '../router/routeMap';
-import Upload from './Upload'
 
 
+
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as userInfoActionsFromOtherFile from '../actions/userinfo.js'
 
 import 'antd/dist/antd.css'
 import './style.less'
@@ -17,7 +20,8 @@ class App extends React.Component {
     super(props,context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate();
     this.state = {
-      initDone : false
+      initDone : false,
+      isLogin : false
     }
   }
 
@@ -25,27 +29,49 @@ class App extends React.Component {
     return (
      <div className='main-container'>
         <div className='header'>
-
+          <RouteMap
+            userData={'1'}
+            afterLogin = {this.afterLogin.bind(this)}
+          />
 
           
-          
-          <RouteMap/>
-
-
         </div>
-       <Upload/>
+
+
      </div>
     )
   }
 
-componentDidMount() {
-  this.setState({
-    initDone : true
-  })
-}
+  componentDidMount() {
+    this.setState({
+      initDone : true
+    });
+
+  }
+
+  componentWillMount() {
+
+  }
+
+  afterLogin() {
+
+  }
 
 }
 
 
-
-export default App;
+// -----------------------------redux-react绑定-----------------------------------
+function mapStateToProps(state) {
+  return {
+      userinfo: state.userinfo.userinfo
+  }
+}
+function mapDispatchToProps(dispatch) {
+  return {
+      userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch)
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

@@ -15,7 +15,7 @@ class RouterMap extends React.Component {
         return (
             <BrowserRouter >
                 <div>
-                    <Nav />
+                    <Nav userData = {this.props.userData} />
                     <Switch >
                         <Route  exact path='/' component={Home}/>
                         <Route path='/Login' component={Login}/>

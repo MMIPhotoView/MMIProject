@@ -145,7 +145,8 @@ class UserPage extends React.Component {
 
   followHandle(id) {
     // console.log(`处理关注的,${id}`)
-    if (this.state.isme) {
+    console.log(this.state.isme)
+    if (this.props.userinfo.username != null && this.props.userinfo.username!=='') {
       // 登陆成功
       const fromid = this.props.userinfo.username;
       const result = follow(fromid, id);
@@ -153,7 +154,7 @@ class UserPage extends React.Component {
         return res.json();
       }).then((json) => {
         const temp = json;
-        this.state.followList.push(temp);
+        this.state.loginFollowList.push(temp);
         notification['success']({
           message: '关注成功',
           description: `关注用户${json.name}成功`,
@@ -175,18 +176,18 @@ class UserPage extends React.Component {
 
   cancelFollowHandle(id) {
     console.log(`处理取消关注的,${id}`)
-    if (this.state.isme) {
+    if (this.props.userinfo.username != null && this.props.userinfo.username!=='') {
       // 登陆成功
       const fromid = this.props.userinfo.username;
       const result = unFollow(fromid, id);
       result.then((res) => {
         return res.json();
       }).then(() => {
-        const tempList = this.state.followList.filter((item)=>{
+        const tempList = this.state.loginFollowList.filter((item)=>{
           return item.aid !== id;
         });
         this.setState({
-          followList : tempList
+          loginFollowList : tempList
         })
         notification['success']({
           message: '取消成功',
@@ -294,6 +295,7 @@ class UserPage extends React.Component {
           isme : true
         });
       }
+
     } else {
       this.setState({
         isme : false

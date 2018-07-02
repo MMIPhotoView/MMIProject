@@ -73,7 +73,7 @@ class UserTop extends React.Component {
         </div>
         <FansListComponent
           toOtherUser = {this.toOtherUser.bind(this)}
-          followList = {this.props.followList.map((item) => (item.aid))}
+          followList = {this.props.loginFollowList.map((item) => (item.aid))}
           list = {this.props.followList}
           visible={this.state.followOpen}
           onClose={this.onCloseListHandle.bind(this)}
@@ -85,7 +85,7 @@ class UserTop extends React.Component {
         />
         <FansListComponent
           toOtherUser = {this.toOtherUser.bind(this)}
-          followList = {this.props.followList.map((item) => (item.aid))}
+          followList = {this.props.loginFollowList.map((item) => (item.aid))}
           list = {this.props.fansList}
           visible={this.state.fansOpen}
           onClose={this.onCloseFansListHandle.bind(this)}
