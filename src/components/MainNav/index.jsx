@@ -36,7 +36,7 @@ class Nav extends React.Component {
                              {/*<Upload />*/}
                             {/*上传照片*/}
                         {/*</div>*/}
-                        <div>
+                        <div style={{height:'100%'}}>
                           <Upload />
                         </div>
 
