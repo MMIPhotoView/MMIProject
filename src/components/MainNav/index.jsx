@@ -4,15 +4,15 @@ import PureRenderMixin from 'react-addons-pure-render-mixin';
 import './style.less'
 // import SearchComponent from '../Search'
 import { Menu, Affix } from 'antd';
-// import Upload from '../../components/Upload'
- 
+import Upload from '../../components/Upload'
+
 
 class Nav extends React.Component {
 
     constructor(props, context) {
         super(props,context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-        
+
     }
 
     render() {
@@ -25,20 +25,23 @@ class Nav extends React.Component {
                     </Menu.Item>
 
 
-                   
-                
+
+
                     <Menu.Item key="user" style={{float:'right'}}>
                         <NavLink to={'/Login'}>用户</NavLink>
                     </Menu.Item>
 
                     <Menu.Item key="upload" style={{float:'right'}} >
-                        <div onClick={this.clickHandle.bind(this)}>
-                            {/* <Upload /> */}
-                            上传照片
+                        {/*<div onClick={this.clickHandle.bind(this)}>*/}
+                             {/*<Upload />*/}
+                            {/*上传照片*/}
+                        {/*</div>*/}
+                        <div>
+                          <Upload />
                         </div>
 
                     </Menu.Item>
-                
+
 
                 </Menu>
             </Affix>
@@ -55,7 +58,7 @@ class Nav extends React.Component {
 
 
     clickHandle() {
-        
+
         // this.setState({
         //     uploadVisable:!this.state.uploadVisable
         // });
