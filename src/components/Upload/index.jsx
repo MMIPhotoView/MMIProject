@@ -128,7 +128,7 @@ class Home extends React.Component {
     return (
       <div>
         <Affix className={'affix-position'} offsetTop={this.state.top} onClick={this.showModal}>
-          <Icon type="plus-square-o" style={{fontSize:'80px',float:'left'}}/>
+          {/*<Icon type="plus-square-o" style={{fontSize:'80px',float:'left'}}/>*/}
           <span  style={{ float:'left', clear:'left', textAlign:'center', width: '80px'}}>上传照片</span>
         </Affix>
 
