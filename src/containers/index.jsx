@@ -34,8 +34,6 @@ class App extends React.Component {
             logoutHandle = {this.logoutHandle.bind(this)}
             toMain = {this.toMain.bind(this)}
           />
-
-          
         </div>
 
 

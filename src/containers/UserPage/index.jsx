@@ -183,12 +183,22 @@ class UserPage extends React.Component {
       result.then((res) => {
         return res.json();
       }).then(() => {
-        const tempList = this.state.loginFollowList.filter((item)=>{
-          return item.aid !== id;
-        });
-        this.setState({
-          loginFollowList : tempList
-        })
+        
+        if (this.state.isme) {
+          const tempList = this.state.followList.filter((item)=>{
+            return item.aid !== id;
+          });
+          this.setState({
+            followList : tempList
+          });
+        } else {
+          const tempList = this.state.loginFollowList.filter((item)=>{
+            return item.aid !== id;
+          });
+          this.setState({
+            loginFollowList : tempList
+          });
+        }
         notification['success']({
           message: '取消成功',
           description: '取消关注成功',

@@ -8,9 +8,13 @@ import UserPage from '../containers/UserPage'
 import EditUserInfoPage from '../containers/EditUserInfo'
 import FollowList from '../containers/FollowList'
 import Register from '../containers/Register'
+import Search from '../containers/Search'
 
 
 class RouterMap extends React.Component {
+    
+    
+
     render() {
         return (
             <BrowserRouter >
@@ -19,6 +23,7 @@ class RouterMap extends React.Component {
                         userData = {this.props.userData}
                         logoutHandle = {this.props.logoutHandle}
                         toMain = {this.props.toMain}
+                        // history = {this.props}
                     />
                     <Switch >
                         <Route  exact path='/' component={Home} />
@@ -27,8 +32,8 @@ class RouterMap extends React.Component {
                         <Route path='/FollowList' component={FollowList}/>
                         <Route path='/EditUserInfo' component={EditUserInfoPage}/>
                         <Route path='/Register' component={Register}/>
+                        <Route path='/search(/:keyword)' component={Search}/>
                         <Route component={NotFound}/>
-
                     </Switch>
                 </div>
 

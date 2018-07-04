@@ -104,7 +104,9 @@ class Login extends React.Component {
           userid : json.account.id
         });
 
-        this.props.history.push(`/User/${json.account.id}`)
+        this.props.history.push(`/User/${encodeURIComponent(json.account.id)}`);
+        // this.props.history.push('/');
+
       } else {
         message.error('账号密码错误!请重新输入')
       }

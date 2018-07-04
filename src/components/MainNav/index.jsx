@@ -6,6 +6,7 @@ import SearchComponent from '../Search'
 import { Menu, Affix, Avatar, Icon } from 'antd';
 import Upload from '../../components/Upload'
 
+
 const SubMenu = Menu.SubMenu;
 // const MenuItemGroup = Menu.ItemGroup;
 class Nav extends React.Component {
@@ -47,7 +48,8 @@ class Nav extends React.Component {
                         <NavLink to={'/'}>首页</NavLink>
                     </Menu.Item>
                   <div >
-                    <SearchComponent/>
+                    <SearchComponent history={this.context.router.history}/>
+
                   </div>
 
                     {
@@ -117,5 +119,8 @@ class Nav extends React.Component {
     }
 }
 
+Nav.contextTypes = {
+    router : React.PropTypes.object
+}
 
 export default Nav;

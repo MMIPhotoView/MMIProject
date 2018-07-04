@@ -12,9 +12,9 @@ function getBase64(img, callback) {
 function beforeUpload(file) {
   const isJPG = file.type === 'image/jpeg';
   // const isJPG2 =  file.type === 'image/png'
-  if (!isJPG2) {
-    message.error('You can only upload JPG file!');
-  }
+  // if (!isJPG2) {
+  //   message.error('You can only upload JPG file!');
+  // }
   const isLt2M = file.size / 1024 / 1024 < 2;
   if (!isLt2M) {
     message.error('Image must smaller than 2MB!');
