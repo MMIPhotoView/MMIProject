@@ -24,7 +24,8 @@ class App extends React.Component {
 
   showModal = () => {
     this.setState({
-      visible: true
+      visible: true,
+      photoName:this.props.data.name
     });
   }
 
@@ -92,7 +93,7 @@ class App extends React.Component {
     return (
       <div>
         
-        <Icon type="setting" onClick={this.showModal} style={{fontSize:'30px'}}/>
+        <Icon type="setting" onClick={this.showModal.bind(this)} style={{fontSize:'30px'}}/>
         <Modal
           title="照片操作"
           visible={this.state.visible}
@@ -136,7 +137,7 @@ class App extends React.Component {
             {tags.map((tag, index) => {
               const isLongTag = tag.length > 20;
               const tagElem = (
-                <Tag key={index} closable={index >= 0} afterClose={() => this.handleClose(tag)}>
+                <Tag key={`Tag${index}`} closable={index >= 0} afterClose={() => this.handleClose(tag)}>
                   {isLongTag ? `${tag.slice(0, 20)}...` : tag}
                 </Tag>
               );

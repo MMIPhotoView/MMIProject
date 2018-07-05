@@ -53,7 +53,9 @@ class UserPage extends React.Component {
           />
         
         <div style={{marginTop:'4%'}}></div>
+
         {
+
           this.state.photoData.length
           ? <PhotoList
             isme={this.state.isme}
@@ -65,10 +67,13 @@ class UserPage extends React.Component {
           : (<div style={{textAlign:'center'}}>
               <h3>还没有照片，快上传吧～！</h3>
               <p>
+                
                 前往<Link to='/'>首页</Link>查看更多人气图片~
               </p>
 
             </div>)
+
+
         }
 
       </div>
