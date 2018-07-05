@@ -36,7 +36,7 @@ class Home extends React.Component {
                 this.state.isLike
                 ?
                   <Icon type="heart-o" style={{fontSize:'22px'}}/>
-                  :<Icon type="heart" style={{fontSize:'22px'}}/>
+                  :<Icon type="heart" style={{fontSize:'22px',color:'#ff0000'}}/>
               }
             </div>
             <div className='user-name'><span>{`相片：${data.name}`}</span></div>
