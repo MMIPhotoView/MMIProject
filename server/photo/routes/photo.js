@@ -13,7 +13,25 @@ var dateUtil = require('../util/dateUtil')
 
 
 
-
+router.post('/upload', function(req, res) {
+    
+    const uploadDir= './public/images/';
+    var form = new multiparty.Form({uploadDir:uploadDir});
+    if (!fs.existsSync(uploadDir)){
+        fsHelper.mkdirsSync(uploadDir)
+    }
+    form.parse(req, function(err, fields, files){
+        console.log(fields)
+        if (err) {
+            console.log(err)
+            res.send({"code":1,"msg":err})
+        } else {
+            console.log(fields)
+        }
+    });
+    
+    
+});
 
 
 /**
@@ -21,9 +39,10 @@ var dateUtil = require('../util/dateUtil')
  */
 router.post('/uploadImage', function(req, res){
     var photo = new Photo();
-    const uploadDir= './public/images/'+ req.cookies.currentId+'/files/';
+    const uploadDir= './public/images/files/';
     var form = new multiparty.Form({uploadDir:uploadDir});
-    console.log(req.body.p_name)
+    // console.log(req.body.p_name)
+    console.log(form)
     if (!fs.existsSync(uploadDir)){
         fsHelper.mkdirsSync(uploadDir)
     }
@@ -33,14 +52,14 @@ router.post('/uploadImage', function(req, res){
             res.send({"code":1,"msg":err})
 
         }else {
-                console.log(fields)
+            console.log(fields)
             var pName = fields.p_name[0];
             var url = "";
             var desc = fields.p_desc[0];
             var pLabel = fields.p_label[0];
             var pGroupName = fields.p_groupName[0];
-            var pUploadTime = dateUtil.getAllDate();
-            photo.setPhoto(null,req.cookies.currentId,pName,url,desc,pLabel,pGroupName,pUploadTime);
+            var pUploadTime = dateUtil.getAllDate(); 
+            photo.setPhoto(null,'2','name','','desc','#pLabel','pGroupName',pUploadTime);
             photoService.uploadPhoto(photo,files.file[0],uploadDir,function (result) {
                 console.log(result)
                 res.send({"code":0,"msg":"图片上传成功"})
@@ -157,7 +176,6 @@ router.post('/searchPhoto',function(req, res, next){
     // var pName = req.body.pName;
     // var pDesc = req.body.pDesc;
     var pLabel= req.body.pLabel;
-    console.log(pLabel)
     // var pUpLoadTime = req.body.pUpLoadTime;
     photo.setPhoto(null,null,null,null,null,pLabel,null,null);
     photoService.queryPhotoByAllData(photo,function (result) {

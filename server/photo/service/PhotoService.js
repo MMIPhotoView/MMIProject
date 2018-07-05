@@ -43,7 +43,7 @@ exports.uploadPhoto = function (photo, file,dir,callback) {
 
     var dstPath = dir;
     dstPath = dstPath + photo.pUploadTime  +postfix;
-    photo.photoUrl = '..'+dstPath.substring(8);
+    photo.photoUrl = 'http://localhist:8888/'+dstPath.substring(8);
 
     fs.rename(uploadPath,dstPath,function (err) {
        if (err){
