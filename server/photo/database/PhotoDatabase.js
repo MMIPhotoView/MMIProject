@@ -153,7 +153,7 @@ function PhotoDatabase(){
                 params.push(photo.pDesc);
             }
             if (photo.pLabel) {
-                whereSql += ((whereSql) ? ' and ' : ' ') + "label like '%'||?||'%'";
+                whereSql += ((whereSql) ? ' and ' : ' ') + "label like '%||?||%'";
                 params.push(photo.pLabel);
             }
             if (photo.pUploadTime) {
@@ -165,8 +165,9 @@ function PhotoDatabase(){
         if (whereSql) {
             sql += (" where " + whereSql);
         }
-        console.log("sql> " + sql);
-        db.all(sql,params,function (err, result) {
+        sql = `select * from t_photo where label like '%${photo.pLabel}%'`
+        console.log("sql>' " + sql);
+        db.all(sql,function (err, result) {
             if(err){
                 console.log(err)
                 callback && callback(err)

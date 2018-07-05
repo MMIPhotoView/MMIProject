@@ -153,12 +153,13 @@ router.post('/getPhotoByGroupName',function (req, res, next) {
  */
 router.post('/searchPhoto',function(req, res, next){
     var photo = new Photo();
-    var uAid = req.body.uaid;
-    var pName = req.body.pName;
-    var pDesc = req.body.pDesc;
+    // var uAid = req.body.uaid;
+    // var pName = req.body.pName;
+    // var pDesc = req.body.pDesc;
     var pLabel= req.body.pLabel;
-    var pUpLoadTime = req.body.pUpLoadTime;
-    photo.setPhoto(null,uAid,pName,null,pDesc,pLabel,null,pUpLoadTime);
+    console.log(pLabel)
+    // var pUpLoadTime = req.body.pUpLoadTime;
+    photo.setPhoto(null,null,null,null,null,pLabel,null,null);
     photoService.queryPhotoByAllData(photo,function (result) {
         console.log(result)
        res.json(result);

@@ -28,3 +28,15 @@ export function updatePhotoData(pid, pname, pdesc, plabel) {
     });
     return result;
 }
+
+/**
+ * 搜索标签
+ * @param {*} label 标签
+ */
+export function searchPhoto(label) {
+    const uri = `${photoApi}/searchPhoto`;
+    const result = post(uri, {
+        pLabel : label
+    });
+    return result;
+}

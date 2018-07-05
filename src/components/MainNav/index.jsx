@@ -8,15 +8,21 @@ import Upload from '../../components/Upload'
 
 
 const SubMenu = Menu.SubMenu;
+const initState = {
+    current: 'index',
+    userData : '',
+    isLogin:false,
+    username:''
+}
+
+
 // const MenuItemGroup = Menu.ItemGroup;
 class Nav extends React.Component {
 
     constructor(props, context) {
         super(props,context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-        this.state = {
-          current: 'index'
-        }
+        this.state = initState
 
 
     }
@@ -35,7 +41,7 @@ class Nav extends React.Component {
 
     }
     render() {
-        const data = this.props.userData;
+        let data = this.state.userData;
         return (
             <div>
             <Affix offsetTop={0}>
@@ -53,8 +59,9 @@ class Nav extends React.Component {
                   </div>
 
                     {
-                        (data.username!=null && data.username!=='')
-                        ? (<SubMenu style={{float:'right'}} title={<span><Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'/>用户 - {data.userinfo.name} </span>}>
+                        (this.state.isLogin)
+                        ? (<SubMenu style={{float:'right'}} title={<span><Avatar src='https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'/>
+                            用户 - {this.state.username} </span>}>
                         {/* ? (<SubMenu style={{float:'right'}} title={<span><Icon type="setting" />Navigation Three - Submenu</span>}> */}
                             <Menu.Item key="userMain"><Icon type="user" />
                                 主页<NavLink to={`/User/${data.username}`}>  </NavLink>
@@ -89,9 +96,25 @@ class Nav extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({
-            a:'a'
-        })
+        
+    }
+
+    loadData() {
+
+    }
+
+    componentDidUpdate() {
+        const userinfo = this.props.userData;
+        if (userinfo.username == null) {
+            console.log(123)
+            return ;
+        } else {
+            this.setState({
+                isLogin:true,
+                userData: userinfo,
+                username: userinfo.userinfo.name
+            })
+        }
     }
 
 
@@ -111,6 +134,7 @@ class Nav extends React.Component {
     logoutHandle() {
         const logout = this.props.logoutHandle;
         logout();
+        this.setState(initState)
     }
 
     toMain() {
