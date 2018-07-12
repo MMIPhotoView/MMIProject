@@ -45,15 +45,16 @@ exports.uploadPhoto = function (photo, file,dir,callback) {
     dstPath = dstPath + photo.pUploadTime  +postfix;
     photo.photoUrl = 'http://localhist:8888/'+dstPath.substring(8);
 
-    fs.rename(uploadPath,dstPath,function (err) {
-       if (err){
-            callback('更名失败')
-       }else {
-           pd.uploadPhoto(photo,function (result) {
-               callback(result)
-           });
-       }
+    pd.uploadPhoto(photo,function (result) {
+        callback(result)
     });
+    // fs.rename(uploadPath,dstPath,function (err) {
+    //    if (err){
+    //         callback('更名失败')
+    //    }else {
+           
+    //    }
+    // });
 }
 
 /**
