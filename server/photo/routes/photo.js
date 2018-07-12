@@ -38,36 +38,18 @@ var dateUtil = require('../util/dateUtil')
  * 上传图片
  */
 router.post('/uploadImage', function(req, res){
-    // var photo = new Photo();
-    // const uploadDir= './public/images/files/';
-    // var form = new multiparty.Form({uploadDir:uploadDir});
-    // console.log(req.body.p_name)
-    // console.log(form)
-    // if (!fs.existsSync(uploadDir)){
-    //     fsHelper.mkdirsSync(uploadDir)
-    // }
-    // form.parse(req, function(err, fields, files){
-    //     if (err){
-    //         console.log(err)
-    //         res.send({"code":1,"msg":err})
+    const url = `localhost:8888/images/${req.body.name}.jpg`;
+    const name = req.body.name;
+    const desc = req.body.desc;
+    const aid = req.body.aid;
+    const label = req.body.label;
 
-    //     }else {
-    //         console.log(fields)
-    //         var pName = fields.p_name[0];
-    //         var url = "";
-    //         var desc = fields.p_desc[0];
-    //         var pLabel = fields.p_label[0];
-    //         var pGroupName = fields.p_groupName[0];
-    //         var pUploadTime = dateUtil.getAllDate(); 
-    //         photo.setPhoto(null,'2','name','','desc','#pLabel','pGroupName',pUploadTime);
-    //         photoService.uploadPhoto(photo,files.file[0],uploadDir,function (result) {
-    //             console.log(result)
-    //             res.send({"code":0,"msg":"图片上传成功"})
+    photoService.uploadPhoto1(aid,url,desc,label,name,function(result) {
+        console.log(result);
+        res.json(result);
+    });
 
-    //         })
-
-    //     }
-    // });
+    
 
     
 

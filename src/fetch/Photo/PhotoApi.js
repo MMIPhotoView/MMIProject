@@ -40,3 +40,16 @@ export function searchPhoto(label) {
     });
     return result;
 }
+
+
+export function uploadImage(aid, name, desc, label) {
+    const uri = `${photoApi}/uploadImage`;
+    // console.log(aid,name,desc, label);
+    const result = post(uri,{
+        name: name,
+        desc: desc,
+        label: label,
+        aid: aid
+    });
+    return result;
+}

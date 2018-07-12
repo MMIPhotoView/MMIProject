@@ -57,6 +57,12 @@ exports.uploadPhoto = function (photo, file,dir,callback) {
     // });
 }
 
+exports.uploadPhoto1 = function(aid,url,desc,label,name,callback) {
+    pd.uploadPhoto1(aid,url,desc,label,name,function(result){
+        callback(result);
+    });
+}
+
 /**
  * 删除照片
  * @param photo

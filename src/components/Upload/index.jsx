@@ -2,7 +2,10 @@ import React from 'react';
 import PureRenderMixin from 'react-addons-pure-render-mixin';
 import { Button, Icon, Modal, Affix, Upload, message,Tag, Input, Tooltip} from 'antd';
 import './style.less'
-
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import * as userInfoActionsFromOtherFile from '../../actions/userinfo.js'
+import {uploadImage} from '../../fetch/Photo/PhotoApi.js'
 function getBase64(img, callback) {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result));
@@ -44,14 +47,25 @@ class Home extends React.Component {
   }
 
   //提交和数据获取的函数
-  handleOk = (e) => {
-    console.log(e);
-    console.log('photoName:',this.state.photoName);
-    console.log('TagList:',this.state.tags);
-    console.log('Photo:',this.state.img);
-    this.setState({
-      visible: false
-    });
+  handleOk = () => {
+    // console.log('photoName:',this.state.photoName);
+    // console.log('TagList:',this.state.tags);
+    // console.log('Photo:',this.state.img);
+    if (this.props.userinfo.username != null && this.props.userinfo.username!=='') {
+      let label = '';
+      this.state.tags.forEach((item) => {
+        label = `${label}#${item}`;
+      });
+      uploadImage(this.props.userinfo.username, this.state.photoName, 'nice', label);
+      message.success('上传成功')
+      // console.log()
+      this.setState({
+        visible: false
+      });
+    } else {
+      message.info('尚未登录')
+    }
+    
   }
 
   handleCancel = (e) => {
@@ -135,7 +149,7 @@ class Home extends React.Component {
         <Modal
           title="上传照片"
           visible={this.state.visible}
-          onOk={this.handleOk}
+          onOk={this.handleOk.bind(this)}
           onCancel={this.handleCancel}
           footer={[
             <Button key="back" type="ghost" size="large" onClick={this.handleCancel}>返 回</Button>,
@@ -206,6 +220,22 @@ class Home extends React.Component {
   }
 }
 
+// -----------------------------redux-react绑定-----------------------------------
+function mapStateToProps(state) {
+  return {
+      userinfo: state.userinfo
+  }
+}
+function mapDispatchToProps(dispatch) {
+  return {
+      userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch)
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);
 
 
-export default Home;
+
+

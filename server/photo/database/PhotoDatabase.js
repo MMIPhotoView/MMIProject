@@ -50,6 +50,26 @@ function PhotoDatabase(){
     }
 
     /**
+     * 上传照片1
+     * @param photo
+     */
+    this.uploadPhoto1 = function (aid,url,desc,label,name,callback) {
+        var sql = 'insert into t_photo values(?, ?, ?, ?, ?,?,?,?)';
+        db.run(sql,
+            [null,aid,name,url,desc,label,null,null],
+            function(err) {
+                if (err) {
+                    console.log('fail on add ' + err);
+                    callback && callback(err);
+                } else {
+                    callback && callback('上传成功');
+                    //console.log('用户:'+uR.fromAid +' 关注了用户：' + uR.toAid);
+                }
+            }
+        );
+    }
+
+    /**
      * 上传照片
      * @param photo
      */

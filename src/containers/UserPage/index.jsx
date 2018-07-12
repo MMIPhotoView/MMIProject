@@ -16,19 +16,20 @@ import {notification} from 'antd';
 
 import './style.less'
 
+const init = {
+  userData : {},
+  photoData : [],
+  isme:false,
+  followList:[],
+  fansList:[],
+  loginFollowList:[]
+}
 
 class UserPage extends React.Component {
   constructor(props, context) {
     super(props,context);
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    this.state = {
-      userData : {},
-      photoData : [],
-      isme:false,
-      followList:[],
-      fansList:[],
-      loginFollowList:[]
-    }
+    this.state = init
   }
   render() {
     return (
@@ -80,6 +81,23 @@ class UserPage extends React.Component {
       </TweenOne>
     );
   }
+
+  // componentDidUpdate() {
+  //   this.setState(init);
+  //   // this.getUserDataById();
+  //   // this.getUserPhotoList();
+        
+  //   this.getUserDataById();
+    
+  //   this.isMe();
+
+  //   this.getFollowList();
+
+  //   this.getFansList();
+
+  //   this.getUserPhotoList();
+
+  // }
 
   componentDidMount() {
     
