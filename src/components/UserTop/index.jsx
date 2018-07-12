@@ -7,6 +7,7 @@ import {Button} from 'antd';
 
 
 import './style.less'
+import {message} from "antd/lib/index";
 
 class UserTop extends React.Component {
   constructor(props, context) {
@@ -14,7 +15,8 @@ class UserTop extends React.Component {
     this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate();
     this.state = {
       followOpen:false,
-      fansOpen:false
+      fansOpen:false,
+      isFollow:false,
     }
   }
   render() {
@@ -31,18 +33,19 @@ class UserTop extends React.Component {
 
             <div className={'username'}>
                 {this.props.userinfo.name}
-                
+
                   <span>
                   {
                     this.props.isme
                     ? <Link to="/EditUserInfo"><button className={'edit-btn'} >编辑个人资料</button></Link>
-                    : ( this.props.followList.map((item) => (item.aid)).indexOf(this.props.userinfo.aid) == -1
-                        ? <Button style={{margin:'0 0 5px 10px'}} size='small' >关注</Button>
-                        : <Button type='primary' style={{margin:'0 0 5px 10px'}} size='small' >已关注</Button>
+                    : ( this.props.followList.map((item) => (item.aid)).indexOf(this.props.userinfo.aid) == -1,
+                    this.state.isFollow
+                        ? <Button style={{margin:'0 0 5px 10px'}} size='small' onClick={this.handleFollow.bind(this)} >关注</Button>
+                        : <Button type='primary' style={{margin:'0 0 5px 10px'}} size='small' onClick={this.handleFollow.bind(this)}>已关注</Button>
                       )
                   }
                   </span>
-                
+
             </div>
             <ul className={'count-list'}>
               <li className="list-item" onClick={this.editMyData}>
@@ -52,6 +55,7 @@ class UserTop extends React.Component {
               {/* <Link to='/FollowList'> */}
               {/* <a href= '#'> */}
                 <li className="list-item" onClick={this.onCloseListHandle.bind(this)}>
+
                     <span>{this.props.followList.length}</span>
                     关注
                 </li>
@@ -77,7 +81,7 @@ class UserTop extends React.Component {
           list = {this.props.followList}
           visible={this.state.followOpen}
           onClose={this.onCloseListHandle.bind(this)}
-        
+
           followHandle = {this.props.followHandle}
           cancelFollowHandle = {this.props.cancelFollowHandle}
 
@@ -99,7 +103,7 @@ class UserTop extends React.Component {
   }
 
 
-  
+
 
   /**
    * 修改我的资料的跳转
@@ -123,12 +127,26 @@ class UserTop extends React.Component {
     })
   }
 
+  handleFollow(){
+    if(this.state.isFollow){
+      this.setState({
+        isFollow:false,
+      })
+      message.info("成功取消关注")
+    }else if(!this.state.isFollow){
+      this.setState({
+        isFollow:true,
+      })
+      message.info("成功关注")
+    }
+  }
+
   /**
    * 访问其他用户
    * @param {用户id} id
    */
   toOtherUser(id) {
-    
+
     const toOU = this.props.toOtherUser;
     toOU(id);
   }

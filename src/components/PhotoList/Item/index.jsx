@@ -12,7 +12,7 @@ class Home extends React.Component {
     this.state = {
       visible: false,
       tags: '',
-      isLike: false,
+      isLike: true,
       liker: ['渣渣辉、', '狗天乐'],
     }
 
@@ -33,10 +33,10 @@ class Home extends React.Component {
             {/* <div className='user-icon'><img src="../../../images/yeoman.png" alt="头像"/></div> */}
             <div className={'user-like'} onClick={this.handleLike.bind(this)}>
               {
-                this.state.isLike
-                ?
+                this.state.isLike ?
                   <Icon type="heart-o" style={{fontSize:'22px'}}/>
                   :<Icon type="heart" style={{fontSize:'22px',color:'#ff0000'}}/>
+
               }
             </div>
             <div className='user-name'><span>{`相片：${data.name}`}</span></div>
